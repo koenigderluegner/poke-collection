@@ -21,7 +21,7 @@ import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
   }
 })
 export class IndexComponent {
-  private readonly currentSpreadsheet = inject(SpreadsheetFacade).currentSpreadsheetRef.value;
+  private readonly currentSpreadsheet = inject(SpreadsheetFacade).currentSpreadsheet;
 
   spreadsheetId = computed(() => this.currentSpreadsheet()?.id);
   worksheets = computed(() => this.currentSpreadsheet()?.worksheets.filter(worksheet => worksheet.config?.type === 'Valuables'));

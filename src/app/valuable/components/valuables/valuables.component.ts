@@ -21,7 +21,7 @@ import { CastValuablePipe } from '@shared/pipes/cast-valuable.pipe';
   ]
 })
 export class ValuablesComponent {
-  private currentSpreadsheet = inject(SpreadsheetFacade).currentSpreadsheetRef.value;
+  private currentSpreadsheet = inject(SpreadsheetFacade).currentSpreadsheet;
   private slugifyPipe = inject(SlugifyPipe);
   private gridService = inject(GridService);
 
