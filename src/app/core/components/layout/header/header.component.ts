@@ -32,7 +32,6 @@ export class HeaderComponent {
   valuablesLink: string | undefined;
   windowSize = window.innerWidth;
   readonly templatePortalContent = viewChild.required<TemplateRef<unknown>>('menuTemplate');
-  breeablesLink: string[] = [];
   valuablesLinkArray: string[] = [];
   toolsLink: string[] = ['tools'];
   livingDexesLink: string[] = ['living-dexes', 'home'];
@@ -45,21 +44,18 @@ export class HeaderComponent {
       const spreadsheetData = this.spreadsheetFacade.currentSpreadsheetRef.value();
 
       if (spreadsheetData) {
-        this.breeablesLink = [
-          '/' + this.spreadsheetFacade.sheetURLPath(),
-          'breedables',
-          'overview'];
+
         this.spreadsheetData = spreadsheetData;
         if (this.spreadsheetData.hasValuables) {
           this.valuablesLink = this.spreadsheetData.worksheets.filter(worksheet => worksheet.config?.type === 'Valuables')[0].title;
           this.valuablesLinkArray = [
-            '/' + this.spreadsheetFacade.sheetURLPath(),
+            '/',
             'valuables',
             this.slugifyPipe.transform(this.valuablesLink)];
         }
 
-        this.toolsLink = ['/' + this.spreadsheetFacade.sheetURLPath(), 'tools'];
-        this.livingDexesLink = ['/' + this.spreadsheetFacade.sheetURLPath(), 'living-dexes', 'home'];
+        this.toolsLink = ['/', 'tools'];
+        this.livingDexesLink = ['/', 'living-dexes', 'home'];
       }
 
 
