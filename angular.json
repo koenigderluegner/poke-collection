@@ -72,12 +72,6 @@
             }
           }
         },
-        "extract-i18n": {
-          "builder": "@angular/build:extract-i18n",
-          "options": {
-            "buildTarget": "poketrades:build"
-          }
-        },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
