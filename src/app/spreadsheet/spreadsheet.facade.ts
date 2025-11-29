@@ -2,7 +2,6 @@ import { computed, effect, inject, Injectable, linkedSignal, signal } from '@ang
 import { BehaviorSubject } from 'rxjs';
 import { Spreadsheet } from './models/spreadsheet';
 import { SpreadsheetService } from './services/spreadsheet.service';
-import { SearchHistoryEntry } from '../spreadsheet-changer/models/search-history-entry.interface';
 import { ApiError } from '@shared/interfaces/api-error.interface';
 import { API_KEY } from '../../environments/api-key.injection-token';
 
@@ -21,7 +20,6 @@ export class SpreadsheetFacade {
 
   private readonly _currentSpreadsheet$: BehaviorSubject<Spreadsheet>;
 
-  private readonly _searchHistory = signal<SearchHistoryEntry[]>([]);
 
   currentSpreadsheetId = signal<string>('');
   currentSpreadsheetRef = this.spreadsheetService.getSpreadsheet(this.currentSpreadsheetId, this.apiKey);
@@ -66,12 +64,6 @@ export class SpreadsheetFacade {
 
   constructor() {
 
-    effect(() => {
-      const searchResult = this.searchResult.value();
-      if (searchResult) {
-        this.saveToHistory(searchResult);
-      }
-    });
 
     effect(() => {
       const currentSpreadsheet = this.currentSpreadsheetRef.value();
@@ -83,11 +75,7 @@ export class SpreadsheetFacade {
       }
     });
 
-    if (!localStorage.getItem('spreadsheetHistory')) {
-      localStorage.setItem('spreadsheetHistory', JSON.stringify([]));
-    } else {
-      this._searchHistory.set(JSON.parse(localStorage.getItem('spreadsheetHistory') ?? [].toString()));
-    }
+
     this._currentSpreadsheet$ = new BehaviorSubject<Spreadsheet>({
       title: '',
       hasBreedables: false,
@@ -102,14 +90,6 @@ export class SpreadsheetFacade {
     return this._currentSpreadsheet$;
   }
 
-
-  updateCurrentSpreadsheet(spreadsheet: Spreadsheet) {
-    this.currentSpreadsheetRef.set(spreadsheet);
-  }
-
-  getSpreadsheetHistory$() {
-    return this._searchHistory;
-  }
 
   public convertApiErrors(errorStatus: number): ApiError {
     const newError = {
@@ -130,20 +110,5 @@ export class SpreadsheetFacade {
     return newError;
   }
 
-  private saveToHistory(spreadsheet: Spreadsheet): void {
-    this._searchHistory.update(history => {
-      const entryIndex = history.findIndex((searchHistoryEntry: SearchHistoryEntry) => searchHistoryEntry.id === spreadsheet.id);
-      if (entryIndex !== -1) {
-        history.splice(entryIndex, 1);
-      }
-      history.unshift({
-        title: spreadsheet.title,
-        id: spreadsheet.id,
-        saveDate: new Date().toTimeString()
-      });
-      localStorage.setItem('spreadsheetHistory', JSON.stringify(history));
-      return [...history];
-    });
-  }
 
 }

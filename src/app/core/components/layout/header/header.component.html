@@ -12,7 +12,6 @@
   <nav class="App-navigation">
     <div class="nav-wrapper">
       <ul>
-        <li><a routerLink="/change-spreadsheet">Change Spreadsheet</a></li>
         @if (spreadsheetData) {
           @if (spreadsheetData.hasBreedables) {
             <li>
@@ -44,7 +43,6 @@
 <ng-template #menuTemplate>
   <!-- remove code duplication -->
   <ul id="pop-up-main-menu" (click)="closeMenu()">
-    <li><a (click)="closeMenu()" routerLink="/change-spreadsheet">Change Spreadsheet</a></li>
     @if (spreadsheetData) {
       @if (spreadsheetData.hasBreedables) {
         <li>

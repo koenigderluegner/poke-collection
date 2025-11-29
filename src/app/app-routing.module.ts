@@ -33,18 +33,14 @@ export const appRoutes: Routes = [
     loadChildren: () => import('./living-dexes/living-dexes-routes').then(m => m.routes)
   },
   {
-    path: 'help',
-    loadChildren: () => import('./help/help-routing.module').then(m => m.routes)
-  },
-  {
-    path: 'change-spreadsheet',
-    loadChildren: () => import('./spreadsheet-changer/spreadsheet-changer-routing.module').then(m => m.routes)
-  },
-  {
     path: ':spreadsheetId', children: userRoutes
   },
   {
     path: 'u/:username', children: userRoutes
+  },
+  {
+    path: 'dex',
+    loadChildren: () => import('./living-dexes/living-dexes-routes').then(m => m.routes)
   },
 ];
 
