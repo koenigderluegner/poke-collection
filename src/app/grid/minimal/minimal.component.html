@@ -2,9 +2,9 @@
 
 @if (poke) {
   <div class="icon">
-    <app-pokemon [shiny]="poke.isShiny" [slug]="poke.iconSlug"></app-pokemon>
+    <app-pokemon [shiny]="poke.isShiny" [slug]="poke.iconSlug"/>
     @if (isPokemon(poke) && poke.item) {
-      <app-item [slug]="poke.item | slugify"></app-item>
+      <app-item [slug]="poke.item | slugify"/>
     }
   </div>
 }

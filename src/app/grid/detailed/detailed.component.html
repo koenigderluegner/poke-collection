@@ -6,14 +6,14 @@
 
     <div class="detailed-header dark-bg flex">
       @if (poke.ball) {
-        <app-item category="ball" [slug]="poke.ball | slugify"></app-item>
+        <app-item category="ball" [slug]="poke.ball | slugify"/>
       }
       {{ poke.name }}
     </div>
     <div class="detailed-species-info  flex">
       <div class="detailed-species-icon">
         <img alt="" class="icon-foundation" src="assets/images/pokesprite-pokeball.svg">
-        <app-pokemon [shiny]="poke.isShiny" [slug]="poke.iconSlug"></app-pokemon>
+        <app-pokemon [shiny]="poke.isShiny" [slug]="poke.iconSlug"/>
       </div>
       <div class="detailed-pokemon-info row">
         <div class="detailed-types">
@@ -31,7 +31,7 @@
         </div>
         <div class="shiny-icon-wrapper">
           @if (poke.isShiny) {
-            <mat-icon svgIcon="shiny-stars"></mat-icon>
+            <mat-icon svgIcon="shiny-stars"/>
           }
         </div>
       </div>
@@ -117,7 +117,7 @@
       <div class="detailed-nature row ">
         <div class="detailed-label dark-bg">Item</div>
         <span class="detailed-text">
-        <app-item [slug]="poke.item | slugify"></app-item>
+        <app-item [slug]="poke.item | slugify"/>
           {{ poke.item }}
       </span>
       </div>
@@ -128,11 +128,8 @@
           @for (move of poke.moves; track move; let i = $index) {
 
             @if (move) {
-              <app-detailed-move
-                [move]="move"
-                [type]="(moves[i]?.type ? moves[i].type : 'unknown')">
-
-              </app-detailed-move>
+              <app-detailed-move [move]="move"
+                                 [type]="(moves[i]?.type ? moves[i].type : 'unknown')"/>
             }
 
           }

@@ -3,7 +3,7 @@
     <a [routerLink]="routerLink.routerLink" [class.active]="routerLinkActive()"
        [queryParamsHandling]="routerLink.queryParamsHandling">
       <div class="icon">
-        <ng-content select="app-item, app-pokemon"></ng-content>
+        <ng-content select="app-item, app-pokemon"/>
       </div>
       <div class="content" [class.no-meta]="!meta()">
         <span class="title">{{ text() }}</span>

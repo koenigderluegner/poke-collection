@@ -12,7 +12,7 @@
                            [text]="worksheet.title"
                            [meta]="''+worksheet.data?.length">
           @if (worksheet.config?.subType) {
-            <app-item [slug]="(getItemMapping(worksheet.config?.subType) | slugify)"></app-item>
+            <app-item [slug]="(getItemMapping(worksheet.config?.subType) | slugify)"/>
           }
         </app-sub-navi-item>
       }

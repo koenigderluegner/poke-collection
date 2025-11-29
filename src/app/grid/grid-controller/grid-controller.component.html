@@ -1,6 +1,6 @@
 @if ((hideAppearance$ | async) === false) {
   <app-changer (selectionChanged)="changeGrid($event)"
-               class="m-right-gap"></app-changer>
+               class="m-right-gap"/>
 }
 @if ((hideOwnedStatusControl$ | async) === false) {
   <mat-form-field class="sel m-right-gap" appearance="fill"
