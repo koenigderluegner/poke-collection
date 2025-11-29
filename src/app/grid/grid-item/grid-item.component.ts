@@ -1,13 +1,13 @@
-import { Component, input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
 import { GridAppearanceType } from '../grid-appearance.type';
 import { Pokemon } from '@shared/interfaces/pokemon';
 import { Breedable } from '@shared/interfaces/breedable.interface';
 
 @Component({
   selector: 'app-grid-item',
-  templateUrl: './grid-item.component.html',
-  styleUrls: ['./grid-item.component.scss'],
+  template: '',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GridItemComponent {
 

@@ -1,27 +1,24 @@
-<div class="App-title">
+<div class="App-title flex items-center gap-2 truncate">
   <a routerLink="/">Koenigs Collection</a>
   @if (spreadsheetFacade.currentSpreadsheet()) {
     <button mat-mini-fab (click)="spreadsheetFacade.currentSpreadsheetRef.reload()"
             [disabled]="spreadsheetFacade.currentSpreadsheetRef.isLoading()">
-      <mat-icon fontIcon="sync" [class.rotate]="spreadsheetFacade.currentSpreadsheetRef.isLoading()"/>
+      <mat-icon class="ease-linear" fontIcon="sync"
+                [class.animate-spin]="spreadsheetFacade.currentSpreadsheetRef.isLoading()"/>
     </button>
   }
 </div>
 
-@if (windowSize >= 1200) {
-  <nav class="App-navigation">
-    <div class="nav-wrapper">
-      <ul>
-        <ng-container *ngTemplateOutlet="menuItems"/>
-      </ul>
-    </div>
-  </nav>
-}
-@if (windowSize < 1200) {
-  <button type="button" (click)="openMenu()" mat-button>
-    <mat-icon fontIcon="menu"/>
-  </button>
-}
+<nav class="App-navigation ml-auto hidden tablet:block ">
+  <div class="nav-wrapper">
+    <ul class="flex items-center">
+      <ng-container *ngTemplateOutlet="menuItems"/>
+    </ul>
+  </div>
+</nav>
+<button class="tablet:hidden!" type="button" (click)="openMenu()" mat-icon-button>
+  <mat-icon fontIcon="menu"/>
+</button>
 
 <ng-template #menuTemplate>
   <!-- remove code duplication -->
@@ -35,7 +32,7 @@
 <ng-template #menuItems>
   @if (valuablesLink()) {
     <li>
-      <a routerLinkActive="selected" (click)="closeMenu()" [routerLink]="valuablesLink()">Valuables</a>
+      <a class="p-2" routerLinkActive="selected" (click)="closeMenu()" [routerLink]="valuablesLink()">Valuables</a>
     </li>
   }
 </ng-template>

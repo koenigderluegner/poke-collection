@@ -4,13 +4,13 @@
 
   @if ((dbpokemon$ | async); as dbpokemon) {
 
-    <div class="detailed-header dark-bg d-flex">
+    <div class="detailed-header dark-bg flex">
       @if (poke.ball) {
         <app-item category="ball" [slug]="poke.ball | slugify"></app-item>
       }
       {{ poke.name }}
     </div>
-    <div class="detailed-species-info  d-flex">
+    <div class="detailed-species-info  flex">
       <div class="detailed-species-icon">
         <img alt="" class="icon-foundation" src="assets/images/pokesprite-pokeball.svg">
         <app-pokemon [shiny]="poke.isShiny" [slug]="poke.iconSlug"></app-pokemon>

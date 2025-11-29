@@ -13,7 +13,7 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
-import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
 import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
@@ -25,12 +25,12 @@ import { NgTemplateOutlet } from '@angular/common';
     RouterLink,
     RouterLinkActive,
     MatIcon,
-    MatButton,
     MatMiniFabButton,
-    NgTemplateOutlet
+    NgTemplateOutlet,
+    MatIconButton
   ],
   host: {
-    'class': 'app-header',
+    'class': 'app-header bg-[#060606] p-3 flex w-full justify-between',
     '(window:resize)': 'onResize($event)'
   }
 })

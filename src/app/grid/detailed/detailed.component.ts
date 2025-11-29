@@ -39,7 +39,6 @@ export class DetailedComponent extends GridBaseAppearanceDirective implements On
   natureClass = '';
   dbpokemon$: Observable<PokemonEntry> | undefined;
   moves$: Observable<Move[]> | undefined;
-  protected readonly PokemonComponent = PokemonComponent;
   private databaseFacadeService = inject(DatabaseFacadeService);
 
   get inactive() {

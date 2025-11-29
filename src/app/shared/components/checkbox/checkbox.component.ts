@@ -14,7 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
   encapsulation: ViewEncapsulation.None,
   host: {
-    'class': 'd-flex',
+    'class': 'flex',
   }
 })
 export class CheckboxComponent implements ControlValueAccessor {
