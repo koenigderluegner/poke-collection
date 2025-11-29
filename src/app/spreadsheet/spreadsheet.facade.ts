@@ -1,5 +1,4 @@
-import { computed, effect, inject, Injectable, linkedSignal, signal } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { effect, inject, Injectable, linkedSignal, signal } from '@angular/core';
 import { Spreadsheet } from './models/spreadsheet';
 import { SpreadsheetService } from './services/spreadsheet.service';
 import { ApiError } from '@shared/interfaces/api-error.interface';
@@ -15,15 +14,7 @@ interface CachedSpreadsheet {
   providedIn: 'root',
 })
 export class SpreadsheetFacade {
-  private spreadsheetService = inject(SpreadsheetService);
-  private readonly apiKey = inject(API_KEY);
-
-  private readonly _currentSpreadsheet$: BehaviorSubject<Spreadsheet>;
-
-
   currentSpreadsheetId = signal<string>('');
-  currentSpreadsheetRef = this.spreadsheetService.getSpreadsheet(this.currentSpreadsheetId, this.apiKey);
-
   // ref removes value while loading so we use linkedignal
   currentSpreadsheet = linkedSignal<Spreadsheet | undefined, Spreadsheet | undefined>({
     source: () => this.currentSpreadsheetRef.value(),
@@ -37,30 +28,10 @@ export class SpreadsheetFacade {
 
 
   });
-
-  currentSearchTerm = signal<string>('');
-  searchResult = this.spreadsheetService.getSpreadsheet(this.currentSearchTerm, this.apiKey);
-
-  sheetURLPath = computed(() => {
-    const sheet = this.currentSpreadsheetRef.value();
-    return sheet?.username ? `u/${sheet.username}` : sheet?.id ?? '';
-  });
-
+  private spreadsheetService = inject(SpreadsheetService);
+  private readonly apiKey = inject(API_KEY);
+  currentSpreadsheetRef = this.spreadsheetService.getSpreadsheet(this.currentSpreadsheetId, this.apiKey);
   private readonly _SPREADSHEET_CACHE_KEY = 'cachedSpreadsheet';
-
-  loadCachedSpreadsheet(id: string) {
-    const cachedData = localStorage.getItem(this._SPREADSHEET_CACHE_KEY);
-    if (cachedData) {
-      const data: CachedSpreadsheet = JSON.parse(cachedData);
-
-      if (data.id === id) {
-        this.currentSpreadsheetRef.set(data.value);
-        return true;
-      }
-    }
-    return false;
-  }
-
 
   constructor() {
 
@@ -76,20 +47,20 @@ export class SpreadsheetFacade {
     });
 
 
-    this._currentSpreadsheet$ = new BehaviorSubject<Spreadsheet>({
-      title: '',
-      hasBreedables: false,
-      hasValuables: false,
-      worksheets: [],
-      livingDexChecklist: [],
-      id: '',
-    });
   }
 
-  getCurrentSpreadsheet$(): BehaviorSubject<Spreadsheet> {
-    return this._currentSpreadsheet$;
-  }
+  loadCachedSpreadsheet(id: string) {
+    const cachedData = localStorage.getItem(this._SPREADSHEET_CACHE_KEY);
+    if (cachedData) {
+      const data: CachedSpreadsheet = JSON.parse(cachedData);
 
+      if (data.id === id) {
+        this.currentSpreadsheetRef.set(data.value);
+        return true;
+      }
+    }
+    return false;
+  }
 
   public convertApiErrors(errorStatus: number): ApiError {
     const newError = {

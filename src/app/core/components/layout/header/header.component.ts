@@ -1,5 +1,12 @@
-import { Component, effect, inject, TemplateRef, viewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
-import { Spreadsheet } from '@spreadsheet/models/spreadsheet';
+import {
+  Component,
+  computed,
+  inject,
+  TemplateRef,
+  viewChild,
+  ViewContainerRef,
+  ViewEncapsulation
+} from '@angular/core';
 import { SpreadsheetFacade } from '@spreadsheet/spreadsheet.facade';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
@@ -7,6 +14,7 @@ import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +26,8 @@ import { MatButton, MatMiniFabButton } from '@angular/material/button';
     RouterLinkActive,
     MatIcon,
     MatButton,
-    MatMiniFabButton
+    MatMiniFabButton,
+    NgTemplateOutlet
   ],
   host: {
     'class': 'app-header',
@@ -28,39 +37,23 @@ import { MatButton, MatMiniFabButton } from '@angular/material/button';
 export class HeaderComponent {
   overlay = inject(Overlay);
   viewContainerRef = inject(ViewContainerRef);
-  spreadsheetData: Spreadsheet | undefined;
-  valuablesLink: string | undefined;
   windowSize = window.innerWidth;
   readonly templatePortalContent = viewChild.required<TemplateRef<unknown>>('menuTemplate');
-  valuablesLinkArray: string[] = [];
-  toolsLink: string[] = ['tools'];
-  livingDexesLink: string[] = ['living-dexes', 'home'];
   protected spreadsheetFacade = inject(SpreadsheetFacade);
   private slugifyPipe = inject(SlugifyPipe);
+  valuablesLink = computed<string[] | undefined>(() => {
+    const spreadsheetData = this.spreadsheetFacade.currentSpreadsheetRef.value();
+    if (!spreadsheetData || !spreadsheetData.hasValuables) return;
+
+    const valuablesLink = spreadsheetData.worksheets.filter(worksheet => worksheet.config?.type === 'Valuables')[0].title;
+    return [
+      '/',
+      'valuables',
+      this.slugifyPipe.transform(valuablesLink)];
+
+
+  });
   private overlayRef?: OverlayRef;
-
-  constructor() {
-    effect(() => {
-      const spreadsheetData = this.spreadsheetFacade.currentSpreadsheetRef.value();
-
-      if (spreadsheetData) {
-
-        this.spreadsheetData = spreadsheetData;
-        if (this.spreadsheetData.hasValuables) {
-          this.valuablesLink = this.spreadsheetData.worksheets.filter(worksheet => worksheet.config?.type === 'Valuables')[0].title;
-          this.valuablesLinkArray = [
-            '/',
-            'valuables',
-            this.slugifyPipe.transform(this.valuablesLink)];
-        }
-
-        this.toolsLink = ['/', 'tools'];
-        this.livingDexesLink = ['/', 'living-dexes', 'home'];
-      }
-
-
-    });
-  }
 
   onResize(event: UIEvent) {
     this.windowSize = (event.target as Window).innerWidth;

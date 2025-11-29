@@ -1,5 +1,5 @@
 <div class="App-title">
-  <a routerLink="/">{{ spreadsheetData?.title ? spreadsheetData?.title : 'Pokétrades' }}</a>
+  <a routerLink="/">Koenigs Collection</a>
   @if (spreadsheetFacade.currentSpreadsheet()) {
     <button mat-mini-fab (click)="spreadsheetFacade.currentSpreadsheetRef.reload()"
             [disabled]="spreadsheetFacade.currentSpreadsheetRef.isLoading()">
@@ -12,16 +12,7 @@
   <nav class="App-navigation">
     <div class="nav-wrapper">
       <ul>
-        @if (spreadsheetData) {
-          @if (spreadsheetData.hasValuables && valuablesLink) {
-            <li>
-              <a routerLinkActive="selected" [routerLink]="valuablesLinkArray">Valuables</a>
-            </li>
-          }
-        }
-        <li>
-          <a routerLinkActive="selected" [routerLink]="toolsLink">Tools</a>
-        </li>
+        <ng-container *ngTemplateOutlet="menuItems"/>
       </ul>
     </div>
   </nav>
@@ -35,15 +26,16 @@
 <ng-template #menuTemplate>
   <!-- remove code duplication -->
   <ul id="pop-up-main-menu" (click)="closeMenu()">
-    @if (spreadsheetData) {
-      @if (spreadsheetData.hasValuables && valuablesLink) {
-        <li>
-          <a routerLinkActive="selected" (click)="closeMenu()" [routerLink]="valuablesLinkArray">Valuables</a>
-        </li>
-      }
-    }
-    <li>
-      <a routerLinkActive="selected" (click)="closeMenu()" [routerLink]="toolsLink">Tools</a>
-    </li>
+    <ng-container *ngTemplateOutlet="menuItems"/>
+
   </ul>
+</ng-template>
+
+
+<ng-template #menuItems>
+  @if (valuablesLink()) {
+    <li>
+      <a routerLinkActive="selected" (click)="closeMenu()" [routerLink]="valuablesLink()">Valuables</a>
+    </li>
+  }
 </ng-template>
