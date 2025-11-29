@@ -7,6 +7,7 @@ import { appRoutes } from './app-routing.module';
 import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
 import { API_KEY } from '../environments/api-key.injection-token';
 import { environment } from '../environments/environment';
+import { SPREADSHEET_ID_TOKEN } from '@shared/spreadsheet-id-token';
 
 
 export const appConfig: ApplicationConfig = {
@@ -20,6 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi(), withFetch()),
     SlugifyPipe,
     {provide: API_KEY, useValue: environment.googleApiKey},
+    {provide: SPREADSHEET_ID_TOKEN, useValue: '1Vv5VjgTBECyq4iTODtok9JEYR8lWRd5L2ekTD5QaC2M'},
 
   ],
 };
