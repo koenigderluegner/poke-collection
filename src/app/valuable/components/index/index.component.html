@@ -7,7 +7,7 @@
     <ul class="sub-navi">
 
       @for (worksheet of worksheets(); track worksheet) {
-        <app-sub-navi-item [link]="['/'+spreadsheetId(), 'valuables', worksheet.title | slugify]"
+        <app-sub-navi-item [link]="['/', 'valuables', worksheet.title | slugify]"
 
                            [text]="worksheet.title"
                            [meta]="''+worksheet.data?.length">
