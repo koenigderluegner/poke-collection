@@ -34,6 +34,7 @@
               "src/app/shared/components/type-badge/type-images"
             ],
             "styles": [
+              "src/tailwind.css",
               "src/styles.scss"
             ],
             "scripts": [],
