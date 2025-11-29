@@ -1,6 +1,6 @@
 import { Component, inject, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { DatabaseFacadeService } from '../../database/database-facade.service';
-import { forkJoin, Observable, of } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { PokemonEntry } from '../../database/models/pokemon-entry.interface';
 import { Move } from '../../database/models/move.interface';
 import { GridBaseAppearanceDirective } from '../components/grid-base-appearance.directive';
@@ -34,7 +34,6 @@ import { Pokemon } from '@shared/interfaces/pokemon';
 })
 export class DetailedComponent extends GridBaseAppearanceDirective implements OnInit, OnChanges {
 
-  isEggMove$: Observable<boolean[]> | undefined;
   natureClass = '';
   dbpokemon$: Observable<PokemonEntry> | undefined;
   moves$: Observable<Move[]> | undefined;
@@ -68,9 +67,7 @@ export class DetailedComponent extends GridBaseAppearanceDirective implements On
         return this.databaseFacadeService.findMove(move);
       }));
 
-      this.isEggMove$ = forkJoin(pokemon.moves.map(move => {
-        return pokemon ? this.databaseFacadeService.isEggMove(pokemon.name, move) : of(false);
-      }));
+
     }
   }
 }

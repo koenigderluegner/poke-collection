@@ -32,10 +32,6 @@ export class DatabaseFacadeService {
     return this.moveService.findMove(name);
   }
 
-  isEggMove(pokemonName: string, move: string): Observable<boolean> {
-    return this.moveService.isEggMove(pokemonName, move);
-  }
-
 
   isNature(natureToCheck: string): boolean {
     return this.naturesService.isNature(natureToCheck);

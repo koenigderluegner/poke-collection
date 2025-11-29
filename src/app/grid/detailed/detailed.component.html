@@ -124,13 +124,12 @@
     }
     @if (moves$ | async; as moves) {
       <div class="detailed-moves">
-        @if (isEggMove$ | async; as isEggMove) {
 
           @for (move of poke.moves; track move; let i = $index) {
 
             @if (move) {
               <app-detailed-move
-                [isEggMove]="isEggMove[i]" [move]="move"
+                [move]="move"
                 [type]="(moves[i]?.type ? moves[i].type : 'unknown')">
 
               </app-detailed-move>
@@ -138,7 +137,6 @@
 
           }
 
-        }
       </div>
     }
 
