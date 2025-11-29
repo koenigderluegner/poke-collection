@@ -1,0 +1,54 @@
+$grid-changer-height: 24px;
+
+.grid-changer {
+  user-select: none;
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 1);
+  display: flex;
+  width: fit-content;
+  height: ($grid-changer-height + 6px);
+
+  .grid-changer-option {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  input {
+    display: none;
+  }
+
+  .material-icons {
+    padding: 3px;
+  }
+
+  .label {
+    padding: 3px;
+    display: none;
+    line-height: 24px;
+    width: 85px;
+    height: ($grid-changer-height + 6px);
+  }
+
+  input:checked ~ .label, input:checked ~ .material-icons {
+    background: #313330;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    cursor: default;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .grid-changer {
+    background: #21262d;
+    color: #efe2e3;
+
+    input:checked ~ .label, input:checked ~ .material-icons {
+      background: #161b22;
+      color: #58a6ff;
+    }
+  }
+}
+

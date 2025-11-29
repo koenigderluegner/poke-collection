@@ -1,0 +1,23 @@
+<header class="view-header">Tools</header>
+<div class="view-addional-content">
+  <app-grid-controller/>
+</div>
+<aside class="view-sidebar">
+  <ul class="sub-navi">
+    <app-sub-navi-item [link]="['breeding']" [text]="'Breeding'">
+      <app-item category="key-item" slug="oval-charm"></app-item>
+    </app-sub-navi-item>
+    <app-sub-navi-item [link]="['shiny-dex']" [text]="'Shiny Dex'">
+      <app-item category="key-item" slug="shiny-charm"></app-item>
+    </app-sub-navi-item>
+    <app-sub-navi-item [link]="['friend-safari-shiny-dex']" [text]="'Friend Safari Shiny Dex'">
+      <app-item category="ball" slug="safari"></app-item>
+    </app-sub-navi-item>
+    <app-sub-navi-item [link]="['ultra-wormhole-shiny-dex']" [text]="'Ultra Wormhole Shiny Dex'">
+      <app-item category="ball" slug="beast"></app-item>
+    </app-sub-navi-item>
+  </ul>
+</aside>
+<div class="view-content">
+  <router-outlet/>
+</div>

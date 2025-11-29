@@ -1,0 +1,114 @@
+.grid-controller {
+  display: flex;
+  align-items: center;
+}
+
+.grid-filter {
+  background: #313330;
+  color: #fff;
+  height: 30px;
+  padding: 3px;
+  line-height: 24px;
+  border: none;
+  box-shadow: 0 0 6px black;
+  font-size: 1.6rem;
+}
+
+.filter-others-label {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+.sel.mat-form-field-appearance-fill {
+
+  .mdc-text-field {
+    overflow: unset;
+    padding: 0;
+  }
+
+  .mat-mdc-select-trigger {
+    height: 1.125em;
+  }
+
+  .mat-mdc-select-placeholder {
+    color: rgb(255 255 255 / 53%)
+  }
+
+  .mdc-line-ripple {
+    display: none;
+  }
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+
+  .mat-mdc-form-field-flex {
+    border-radius: 0;
+    padding: .3em;
+    background: #313330;
+    color: #fff;
+    box-shadow: 0 0 6px black;
+  }
+
+  .mat-select-value {
+    color: #fff;
+  }
+
+  .mat-form-field-infix {
+    border-top: none;
+    padding: 0;
+
+
+    .mat-mdc-select-arrow {
+      color: inherit;
+    }
+
+    .mat-select-arrow-wrapper {
+      transform: translateY(0);
+    }
+  }
+
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .grid-controller {
+    flex-direction: column;
+    width: 100%;
+
+    .mat-form-field, app-checkbox, input {
+      width: 100%;
+      margin: 6px 0 12px 0;
+    }
+
+    app-checkbox .inacitve-hider {
+      width: 100%;
+    }
+  }
+
+}
+
+@media (prefers-color-scheme: dark) {
+  .mat-mdc-form-field-flex {
+    background: #21262d;
+    color: #efe2e3;
+  }
+}
+
+.dark-panel {
+  --mat-select-panel-background-color: #21262d;
+
+  .mat-mdc-option {
+    color: #c9d1d9;
+  }
+
+  .mat-mdc-option.mat-selected:not(.mat-mdc-option-disabled) {
+    color: #58a6ff;
+  }
+
+  .mat-mdc-optgroup-label {
+    color: #efe2e3;
+  }
+}

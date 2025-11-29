@@ -1,0 +1,13 @@
+@if (!hideSpinner()) {
+  <div class="Loading-wrapper">
+    <app-spinner [class.pause-animation]="!!currentSpreadsheet.error()"></app-spinner>
+    <span
+      class="message">{{ loadingMessage }} {{ foundCachedSheet() }} {{ databasesLoaded() }} {{ resolvedOrUnnecessary() }}</span>
+  </div>
+} @else {
+  <app-header></app-header>
+  <main class="main-wrapper">
+    <router-outlet></router-outlet>
+  </main>
+  <app-footer></app-footer>
+}

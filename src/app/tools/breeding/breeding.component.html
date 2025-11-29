@@ -1,0 +1,145 @@
+@if ((breedables$ | async); as breedables) {
+
+  <label class="poke-autocomplete-input-wrapper" matAutocompleteOrigin #origin="matAutocompleteOrigin">
+
+    <app-pokemon [slug]="selectedPokemon ? selectedPokemon.iconSlug : 'unknown'"></app-pokemon>
+    <input
+      placeholder="Select Pokémon"
+      matInput
+      class="poke-autocomplete-input"
+      (focusin)="selectInputText($event)"
+      [formControl]="searchControl"
+      [matAutocomplete]="auto"
+      [matAutocompleteConnectedTo]="origin">
+  </label>
+  <mat-autocomplete (optionSelected)="selectPokemon($event)" #auto="matAutocomplete" class="poke-autocomplete"
+                    [displayWith]="displayFn" autoActiveFirstOption>
+    @for (option of filteredPokemon | async; track option) {
+      <mat-option [value]="option">
+        <app-pokemon [slug]="option.pokemon | nameToSlug"></app-pokemon>
+        <span class="pokemon-name"> {{ option.pokemon }} </span>
+      </mat-option>
+    }
+  </mat-autocomplete>
+  @if (selectedPokemon$) {
+
+    @if ((selectedPokemon$ | async); as pokemon) {
+
+      @if (pokemon) {
+
+
+        <div class="card">
+          <h2 class="m-0">{{ pokemon.name }} information</h2>
+          @for (type of pokemon.types; track type) {
+            <app-type-badge [type]="type" size="small">{{ type }}</app-type-badge>
+          }
+          <div><b>Abilities:</b>
+            @for (ability of pokemon.abilities; track ability) {
+              {{ ability }}
+            }
+          </div>
+          <div><b>Hidden Ability:</b> {{ pokemon.hiddenAbility ? pokemon.hiddenAbility : '-' }}</div>
+        </div>
+
+
+        @if (sheetBreeadbles) {
+
+          <table class="breeding-pokemon-table">
+            @for (sheetbreedable of sheetBreeadbles | keyvalue; track sheetbreedable) {
+
+              <tr [class.is-owned]="sheetbreedable.value.isOwned">
+                <td class="ball-col">
+                  <app-item category="ball" [slug]="sheetbreedable.key | slugify"></app-item>
+                </td>
+                <td class="egg-col">
+                  @if (hasMaxEggmoves(sheetbreedable.value)) {
+                    <app-pokemon matTooltip="This breedable has the maximum amount of egg moves!"
+                                 slug="egg"></app-pokemon>
+                  }
+                </td>
+                <td>
+                  @if (sheetbreedable.value.isOwned) {
+
+                    {{ sheetbreedable.value.hasHiddenAbility ? 'HA' : 'NON-HA' }}
+
+                  }
+                </td>
+
+                @for (_ of [].constructor(4); track _) {
+                  <td [class.is-em]="isEggMove(sheetbreedable.value.moves[$index])">
+                    {{ sheetbreedable.value.moves[$index] }}
+                  </td>
+                }
+                <td>
+                  {{ sheetbreedable.value.nature }}
+                </td>
+              </tr>
+
+            }
+          </table>
+
+        }
+
+        <div>
+          <h2>Inheritance</h2>
+          <div class="breeding-move-grid">
+            @for (eggMove of eggMoves; track eggMove) {
+
+              <div class="move-name">{{ eggMove }}</div>
+              <app-grid appearance="minimal">
+                @if (parentMoves) {
+                  @for (parent of (parentMoves | keyvalue); track parent) {
+
+                    @if (parent.key !== pokemon.name && parent.value.eggMoves.includes(eggMove)) {
+                      <app-grid-item [pokemon]="asPokemon({iconSlug: parent.key | slugify}) "/>
+                    }
+
+                  }
+                }
+              </app-grid>
+
+            }
+          </div>
+        </div>
+
+        <div>
+          <h2>Leveling</h2>
+          <div class="breeding-move-grid">
+            @for (eggMove of eggMoves; track eggMove) {
+
+              <div class="move-name">{{ eggMove }}</div>
+              <app-grid appearance="minimal">
+                @if (parentMoves) {
+                  @for (parent of parentMoves | keyvalue; track parent) {
+
+                    @if ((parent.value.levelUpMoves | filterLevelUpMoves: eggMove); as moves) {
+
+                      @if (moves.length) {
+                        <app-grid-item [pokemon]="asPokemon({iconSlug: parent.key | slugify})"
+                        ></app-grid-item>
+                      }
+
+                    }
+                  }
+
+                }
+              </app-grid>
+
+            }
+          </div>
+        </div>
+
+      } @else {
+
+        <app-ball-guy-bubble>The Pokemon you're looking for was not found. The database might not be up to date.
+        </app-ball-guy-bubble>
+
+      }
+
+    }
+
+  }
+
+}
+
+

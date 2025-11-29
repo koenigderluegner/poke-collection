@@ -1,0 +1,17 @@
+@if (shinies$) {
+
+  @if (shinies$|async; as shinies) {
+    <app-grid appearance="minimal" class="friend-safari-grid">
+      @for (shinyDexentry of shinies; track shinyDexentry) {
+
+        @if ((shinyDexentry[1] | shinyDexEntryToPokemon: {item: shinyDexentry[1].pokemon.uwObtainingMethod === 3 ? 'rare-candy' : null}); as pokemon) {
+
+          <app-grid-item [pokemon]="pokemon"></app-grid-item>
+
+        }
+
+      }
+    </app-grid>
+  }
+
+}

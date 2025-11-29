@@ -1,0 +1,144 @@
+.app-header {
+  color: #fff;
+  background: #060606;
+  height: 53px;
+  padding: 0 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transition: padding .2s linear;
+
+
+  .mat-mdc-mini-fab[disabled], .mat-mdc-mini-fab.mat-mdc-button-disabled {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .mat-mdc-mini-fab.mat-accent {
+    --mat-fab-small-container-color: rgb(255 255 255 / 10%);
+  }
+
+
+  a {
+    text-decoration: none;
+  }
+
+  .App-navigation {
+    margin-left: auto;
+  }
+
+  .App-title, .App-navigation ul {
+    display: flex;
+    align-items: center;
+  }
+
+  .App-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    gap: 16px;
+  }
+
+  .App-navigation ul {
+
+    justify-content: flex-end;
+
+    a {
+      color: #c9cacc;
+      padding: 1.6rem;
+      display: block;
+    }
+  }
+
+
+  &:before, &:after {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    -webkit-transform-origin: right top;
+    transform-origin: right top;
+    -webkit-transform: rotate(24deg);
+    transform: rotate(24deg);
+    z-index: -1;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  &:before {
+    background-color: #bd2732;
+    right: 48%;
+    width: 130vw;
+    height: 130vw;
+  }
+
+  &:after {
+    background-color: #dd313d;
+    right: 60%;
+    width: 100vw;
+    height: 100vw;
+  }
+}
+
+#pop-up-main-menu {
+  width: 100%;
+  display: block;
+  background: rgba(0, 0, 0, .7);
+  backdrop-filter: blur(8px);
+  transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  a {
+    color: rgba(255, 255, 255, .8);
+    display: block;
+    width: 100%;
+    padding: 16px;
+    text-decoration: none;
+  }
+}
+
+.rotate {
+  -webkit-animation: rotate 2s infinite linear;
+  animation: rotate 2s infinite linear;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .app-header {
+    &:before {
+      background-color: #67181e;
+    }
+
+    &:after {
+      background-color: #821f26;
+    }
+
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .app-header {
+    padding: 0 0 0 1rem;
+  }
+}
+

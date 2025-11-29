@@ -1,0 +1,38 @@
+.grid.minimal {
+  grid-gap: 6px;
+  grid-template-columns: repeat(auto-fit, 40px);
+
+  .grid-item {
+    height: 40px;
+    width: 40px;
+    border: none;
+    background: rgba(255, 255, 255, .22);
+    border-radius: 5px;
+
+    &.inactive .pokesprite {
+      filter: grayscale(1) opacity(0.2);
+    }
+
+    .icon {
+      position: relative;
+      width: 68px;
+      height: 68px;
+      margin-left: -14px;
+      flex-basis: 40px;
+      margin-top: -28px;
+
+      .item-icon {
+        position: absolute;
+        bottom: -10%;
+        left: 50%;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .grid.minimal .grid-item {
+    background: rgb(0 0 0 / 22%);
+  }
+}
+

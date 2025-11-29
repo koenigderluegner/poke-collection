@@ -1,0 +1,267 @@
+@use '@angular/material' as mat;
+
+@include mat.elevation-classes();
+@include mat.app-background();
+$my-primary: mat.m2-define-palette(mat.$m2-indigo-palette, 500);
+$my-accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$my-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+$my-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+    warn: $my-warn,
+  ),
+  typography: mat.m2-define-typography-config(),
+  density: 0,
+));
+@include mat.all-component-themes($my-theme);
+@import "pokesprite-spritesheet/assets/pokesprite-inventory.css";
+@import "spritesheet.css";
+
+$gap-size: 2.5rem;
+
+:where(.pokesprite):where(.pokemon) {
+  background-position: -140px -5572px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body, html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #000;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(55deg, rgba(225, 230, 252, .3) 40%, rgba(212, 254, 252, .3) 80%) fixed, radial-gradient(circle, #fbf0fe 14%, #f2eff3 42%, #dbeffa 80%) fixed;
+  overflow-y: scroll;
+  font-size: 1.6rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(55deg, rgba(52, 63, 111, 0.3) 40%, rgba(44, 130, 125, 0.3) 80%) fixed, radial-gradient(circle, #151a25 14%, #19151b 42%, #1d0923 100%) fixed;
+  }
+}
+
+ul, ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  color: #000;
+}
+
+
+.sub-navi {
+  display: grid;
+  grid-gap: 4px;
+  grid-auto-rows: max-content;
+}
+
+.view {
+  padding: 3rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 320px 2fr;
+  grid-gap: 2rem;
+  transition: padding .2s linear;
+
+  .view-header {
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 700;
+    font-size: 250%;
+
+    &.full-width {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  .view-additional-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .view-subheader {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .view-subheader ~ .view-subheader {
+    margin-top: 30px;
+  }
+
+
+}
+
+.container {
+  padding: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: block;
+}
+
+.button-row {
+  padding: 16px 0;
+}
+
+@media screen and (max-width: 720px) {
+  .view {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+
+    .view-header.full-width {
+      grid-column: 1/1;
+
+    }
+  }
+
+
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.m-right-gap {
+  margin-right: $gap-size;
+}
+
+.m-left-gap {
+  margin-left: $gap-size;
+}
+
+.m-top-gap {
+  margin-top: $gap-size;
+}
+
+.m-bottom-gap {
+  margin-bottom: $gap-size;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.t-align-center {
+  text-align: center;
+}
+
+.card {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  background-color: #fff;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.mat-form-field .mat-form-field-infix {
+  width: 190px;
+}
+
+.mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: auto;
+}
+
+/**
+Mat Tooltip
+ */
+
+.mat-tooltip-panel .mat-tooltip {
+  background: rgb(255 255 255 / 0.95);
+  color: #000;
+  font-size: 13px;
+  max-width: 350px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+
+  a {
+    color: #fff;
+  }
+
+  body, html, .view .view-header {
+    color: #e0d4d5;
+  }
+
+
+  /* Firefox */
+  * {
+    scrollbar-color: #394045 #131c21;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #131c21;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #394045;
+    border-radius: 20px;
+    border: 3px solid #131c21;
+  }
+
+  .mat-input-element {
+    caret-color: inherit;
+
+    &::placeholder {
+      color: #8b949e;
+      opacity: 1;
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #8b949e;
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      color: #8b949e;
+    }
+
+
+  }
+
+}
+
+.placeholder-light {
+  &::placeholder {
+    color: #8b949e;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #8b949e;
+  }
+
+  &::-ms-input-placeholder { /* Microsoft Edge */
+    color: #8b949e;
+  }
+}

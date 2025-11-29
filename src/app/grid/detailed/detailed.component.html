@@ -1,0 +1,147 @@
+@let poke = pokemon();
+
+@if (poke && dbpokemon$) {
+
+  @if ((dbpokemon$ | async); as dbpokemon) {
+
+    <div class="detailed-header dark-bg d-flex">
+      @if (poke.ball) {
+        <app-item category="ball" [slug]="poke.ball | slugify"></app-item>
+      }
+      {{ poke.name }}
+    </div>
+    <div class="detailed-species-info  d-flex">
+      <div class="detailed-species-icon">
+        <img alt="" class="icon-foundation" src="assets/images/pokesprite-pokeball.svg">
+        <app-pokemon [shiny]="poke.isShiny" [slug]="poke.iconSlug"></app-pokemon>
+      </div>
+      <div class="detailed-pokemon-info row">
+        <div class="detailed-types">
+          @if (dbpokemon) {
+
+            @for (type of dbpokemon.types; track type) {
+              <app-type-badge [type]="type" size="small">{{ type }}</app-type-badge>
+            }
+
+          }
+          @if (!dbpokemon) {
+            <app-type-badge type="unknown" size="small">{{ 'unknown' }}</app-type-badge>
+          }
+
+        </div>
+        <div class="shiny-icon-wrapper">
+          @if (poke.isShiny) {
+            <mat-icon svgIcon="shiny-stars"></mat-icon>
+          }
+        </div>
+      </div>
+    </div>
+
+    @if (isPokemon(poke) && (poke.ivs || poke.evs)) {
+      <div class="detailed-stats row {{natureClass}}"
+           [class.ev-iv]="poke.ivs && poke.evs">
+        <div class="detailed-label dark-bg t-align-center">Stats</div>
+        @if (poke.ivs) {
+          <div class="iv">IVs</div>
+        }
+        @if (poke.evs) {
+          <div class="ev">EVs</div>
+        }
+        <div class="detailed-label dark-bg t-align-center hp">HP</div>
+        @if (poke.ivs) {
+          <div class="hp">{{ poke.ivs.hp }}</div>
+        }
+        @if (poke.evs) {
+          <div class="hp">{{ poke.evs.hp }}</div>
+        }
+        <div class="detailed-label dark-bg t-align-center atk">Attack</div>
+        @if (poke.ivs) {
+          <div class="atk">{{ poke.ivs.atk }}</div>
+        }
+        @if (poke.evs) {
+          <div class="atk">{{ poke.evs.atk }}</div>
+        }
+        <div class="detailed-label dark-bg t-align-center def">Defense</div>
+        @if (poke.ivs) {
+          <div class="def">{{ poke.ivs.def }}</div>
+        }
+        @if (poke.evs) {
+          <div class="def">{{ poke.evs.def }}</div>
+        }
+        <div class="detailed-label dark-bg t-align-center spa">Sp. Atk</div>
+        @if (poke.ivs) {
+          <div class="spa">{{ poke.ivs.spa }}</div>
+        }
+        @if (poke.evs) {
+          <div class="spa">{{ poke.evs.spa }}</div>
+        }
+        <div class="detailed-label dark-bg t-align-center spd">Sp. Def</div>
+        @if (poke.ivs) {
+          <div class="spd">{{ poke.ivs.spd }}</div>
+        }
+        @if (poke.evs) {
+          <div class="spd">{{ poke.evs.spd }}</div>
+        }
+        <div class="detailed-label dark-bg t-align-center spe">Speed</div>
+        @if (poke.ivs) {
+          <div class="spe">{{ poke.ivs.spe }}</div>
+        }
+        @if (poke.evs) {
+          <div class="spe">{{ poke.evs.spe }}</div>
+        }
+      </div>
+    }
+    @if (isPokemon(poke) && poke.dynamaxLevel) {
+      <div class="detailed-dynamax row ">
+        <div class="detailed-label dark-bg">Dynamax Level</div>
+        <ul>
+          @for (_ of [].constructor(10); track _) {
+            <li [class.on]="$index < poke.dynamaxLevel"></li>
+          }
+        </ul>
+      </div>
+    }
+
+    <div class="detailed-ability row ">
+      <div class="detailed-label dark-bg">Ability</div>
+      <span class="detailed-text">{{ poke.ability }}</span>
+    </div>
+
+    @if (natureClass) {
+      <div class="detailed-nature row ">
+        <div class="detailed-label dark-bg">Nature</div>
+        <span class="detailed-text">{{ poke.nature }}</span>
+      </div>
+    }
+    @if (isPokemon(poke) && poke.item) {
+      <div class="detailed-nature row ">
+        <div class="detailed-label dark-bg">Item</div>
+        <span class="detailed-text">
+        <app-item [slug]="poke.item | slugify"></app-item>
+          {{ poke.item }}
+      </span>
+      </div>
+    }
+    @if (moves$ | async; as moves) {
+      <div class="detailed-moves">
+        @if (isEggMove$ | async; as isEggMove) {
+
+          @for (move of poke.moves; track move; let i = $index) {
+
+            @if (move) {
+              <app-detailed-move
+                [isEggMove]="isEggMove[i]" [move]="move"
+                [type]="(moves[i]?.type ? moves[i].type : 'unknown')">
+
+              </app-detailed-move>
+            }
+
+          }
+
+        }
+      </div>
+    }
+
+  }
+
+}
