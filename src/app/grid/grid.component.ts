@@ -122,11 +122,6 @@ export class GridComponent implements OnDestroy {
     return classes;
   }
 
-
-  trackByFn(index: number, item: GridItemComponent): string {
-    return item.pokemon()?.id ?? '';
-  }
-
   sort(sorting: MatSortable) { // mat sort + datasource?
     this.dataSource.sort?.sort(sorting);
 

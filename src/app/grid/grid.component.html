@@ -1,21 +1,28 @@
 @if ((this.dataSource.connect() | async)) {
-  @for (item of dataSource.filteredData; track item) {
 
-    @let poke = item.pokemon();
-
-    @if (poke) {
-      @switch (appearance()) {
-        @case ('minimal') {
-          <app-minimal [pokemon]="poke"/>
+  @switch (appearance()) {
+    @case ('minimal') {
+      @defer {
+        @for (item of dataSource.filteredData; track item) {
+          <app-minimal [pokemon]="item.pokemon()"/>
         }
-        @case ('normal') {
-          <app-normal [pokemon]="poke"/>
+      }
+    }
+    @case ('normal') {
+      @defer {
+        @for (item of dataSource.filteredData; track item) {
+          <app-normal [pokemon]="item.pokemon()"/>
         }
-        @case ('detailed') {
-          <app-detailed [pokemon]="poke"/>
+      }
+    }
+    @case ('detailed') {
+      @defer {
+        @for (item of dataSource.filteredData; track item) {
+          <app-detailed [pokemon]="item.pokemon()"/>
         }
       }
     }
   }
+
 
 }

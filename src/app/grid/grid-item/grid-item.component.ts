@@ -10,7 +10,7 @@ import { Pokemon } from '@shared/interfaces/pokemon';
 })
 export class GridItemComponent {
 
-  readonly pokemon = input<Pokemon>();
+  readonly pokemon = input.required<Pokemon>();
   readonly appearance = input<GridAppearanceType>();
 
 }
