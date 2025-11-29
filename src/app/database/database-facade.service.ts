@@ -2,7 +2,6 @@ import { inject, Injectable } from '@angular/core';
 import { PokemonService } from './services/pokemon.service';
 import { forkJoin, Observable } from 'rxjs';
 import { MoveService } from './services/move.service';
-import { LegalityService } from './services/legality.service';
 import { Move } from './models/move.interface';
 import { PokemonEntry } from './models/pokemon-entry.interface';
 import { Database } from './models/database.interface';
@@ -14,7 +13,6 @@ import { NaturesService } from './services/natures.service';
 export class DatabaseFacadeService {
   private pokemonService = inject(PokemonService);
   private moveService = inject(MoveService);
-  private legalityService = inject(LegalityService);
   private naturesService = inject(NaturesService);
 
 
@@ -22,7 +20,6 @@ export class DatabaseFacadeService {
     return forkJoin({
       pokemon: this.pokemonService.loadDatabase(),
       moves: this.moveService.loadDatabase(),
-      breedableLegality: this.legalityService.loadDatabase()
     });
   }
 

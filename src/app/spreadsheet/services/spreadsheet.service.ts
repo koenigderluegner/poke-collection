@@ -13,8 +13,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { LivingDexChecklist } from '@spreadsheet/models/living-dex-checklist.type';
 import { API_KEY } from '../../../environments/api-key.injection-token';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { BreedablesOverviewList } from '@shared/interfaces/breedables-overview-list.interface';
-import { Breedable } from '@shared/interfaces/breedable.interface';
+
 
 @Injectable({
   providedIn: 'root',
@@ -38,7 +37,7 @@ export class SpreadsheetService {
     'regularOwned', 'shinyOwned', 'slug'
   ];
   readonly #allowedConfigs: AllowedConfig = {
-    type: ['Valuables', 'Breedables', 'livingDex'],
+    type: ['Valuables', 'livingDex'],
     subType: ['RNGs', 'Legendaries', 'Shinies', 'Competitives', 'Events'],
     ball: ['Dream', 'Safari', 'Sport', 'Beast', 'Fast', 'Moon', 'Heavy', 'Love', 'Lure', 'Level',
       'Friend', 'Poké', 'Great', 'Ultra', 'Premier', 'Dive', 'Luxury', 'Nest', 'Net', 'Repeat', 'Timer', 'Quick',
@@ -82,24 +81,12 @@ export class SpreadsheetService {
                         entry.isShiny = true;
                       }
                     }
-
-                    if (worksheet.config?.type === 'Breedables' && worksheet.config?.ball) {
-                      for (const entry of worksheet.data) {
-                        entry.ball = worksheet.config?.ball;
-                      }
-                    }
                   }
 
                 }
 
-                spreadsheet.hasBreedables = spreadsheet.worksheets.some((ws: Worksheet) => ws.config?.type === 'Breedables');
                 spreadsheet.hasValuables = spreadsheet.worksheets.some((ws: Worksheet) => ws.config?.type === 'Valuables');
 
-                if (spreadsheet.hasBreedables) {
-                  spreadsheet.overviewEntries = this.#buildOverviewEntries(
-                    spreadsheet.worksheets.filter((ws: Worksheet) => ws.config?.type === 'Breedables' && ws.config?.ball)
-                  );
-                }
 
 
                 return spreadsheet;
@@ -185,24 +172,6 @@ export class SpreadsheetService {
 
   }
 
-  #buildOverviewEntries(worksheets: Worksheet[]): BreedablesOverviewList {
-    const overviewEntries: BreedablesOverviewList = {};
-    worksheets.forEach((worksheet: Worksheet) => {
-      const ball: string | undefined = worksheet.config?.ball?.toLowerCase();
-      const data: Pokemon[] | undefined = worksheet.data;
-      if (!ball) {
-        return;
-      }
-      overviewEntries[ball] = {};
-      if (data) {
-        data.forEach((pokemon: Pokemon) => {
-          const breedable = (pokemon) as Breedable;
-          overviewEntries[ball][breedable.iconSlug] = breedable;
-        });
-      }
-    });
-    return overviewEntries;
-  }
 
   #getWorksheets(spreadsheetId: () => string, sheetsToCheck: GoogleSpreadsheetResponse['sheets']): Observable<Worksheet[]> {
 
