@@ -1,6 +1,5 @@
-import { ApplicationConfig, SecurityContext } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import { provideRouter, withComponentInputBinding, } from '@angular/router';
-import { provideMarkdown, SANITIZE } from 'ngx-markdown';
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
@@ -17,12 +16,6 @@ export const appConfig: ApplicationConfig = {
       appRoutes,
       withComponentInputBinding(),
     ),
-    provideMarkdown({
-      sanitize: {
-        provide: SANITIZE,
-        useValue: SecurityContext.HTML
-      },
-    }),
     {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: {position: 'above'}},
     provideHttpClient(withInterceptorsFromDi(), withFetch()),
     SlugifyPipe,

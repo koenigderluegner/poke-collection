@@ -56,8 +56,7 @@ export class LivingDexesComponent {
 
   currentDex: Signal<HttpResourceRef<LivingDex[] | undefined> | undefined> = computed(() => {
     const key = this.dexId();
-    if (!key) return;
-    return this.dexes.get(key);
+    return this.dexes.get(!!key ? key : 'home');
   });
   showOnlyUnowned = model(false);
   chunkedDex = computed(() => {

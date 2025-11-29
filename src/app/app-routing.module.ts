@@ -30,7 +30,7 @@ userRoutes.push(...userAndGeneralRoutes);
 export const appRoutes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./changelog/changelog-routing.module').then(m => m.routes)
+    loadChildren: () => import('./living-dexes/living-dexes-routes').then(m => m.routes)
   },
   {
     path: 'help',
