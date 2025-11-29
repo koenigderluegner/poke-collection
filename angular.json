@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "poketrades": {
+    "poke-collection": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
               ".md": "text"
             },
             "outputPath": {
-              "base": "dist/poketrades"
+              "base": "dist/poke-collection"
             },
             "index": "src/index.html",
             "tsConfig": "tsconfig.app.json",
@@ -64,11 +64,11 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
-            "buildTarget": "poketrades:build"
+            "buildTarget": "poke-collection:build"
           },
           "configurations": {
             "production": {
-              "buildTarget": "poketrades:build:production"
+              "buildTarget": "poke-collection:build:production"
             }
           }
         },
