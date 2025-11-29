@@ -39,18 +39,6 @@ $dynamaxColor: #33EAFA,
       box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
     }
 
-    &.inactive {
-      filter: grayscale(1) opacity(0.5);
-
-      &:hover {
-        filter: grayscale(0) opacity(1);
-      }
-
-      .type-badge {
-        filter: grayscale(1);
-      }
-    }
-
     .icon-foundation {
       position: absolute;
       left: 50%;
@@ -75,14 +63,6 @@ $dynamaxColor: #33EAFA,
     .shiny-icon-wrapper {
       height: 38px;
       width: 24px;
-    }
-
-    .inactive {
-      color: rgba(0, 0, 0, .3);
-
-      .icon-wrapper {
-        filter: grayscale(1) opacity(0.1);
-      }
     }
 
   }

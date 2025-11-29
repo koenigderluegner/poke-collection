@@ -30,12 +30,7 @@ export class NaturesService {
     'Serious',
     'Timid'];
 
-  constructor() {
-  }
 
-  getNatures(): string[] {
-    return this.natures;
-  }
 
   isNature(natureToCheck: string): boolean {
     return this.natures.findIndex(nature => nature.toLowerCase() === natureToCheck.toLowerCase()) !== -1;

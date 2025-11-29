@@ -1,4 +1,4 @@
-import { Component, inject, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Component, effect, inject, ViewEncapsulation } from '@angular/core';
 import { DatabaseFacadeService } from '../../database/database-facade.service';
 import { forkJoin, Observable } from 'rxjs';
 import { PokemonEntry } from '../../database/models/pokemon-entry.interface';
@@ -29,45 +29,37 @@ import { Pokemon } from '@shared/interfaces/pokemon';
   ],
   host: {
     'class': 'grid-item',
-    '[class.inactive]': 'inactive',
   }
 })
-export class DetailedComponent extends GridBaseAppearanceDirective implements OnInit, OnChanges {
+export class DetailedComponent extends GridBaseAppearanceDirective {
 
   natureClass = '';
   dbpokemon$: Observable<PokemonEntry> | undefined;
   moves$: Observable<Move[]> | undefined;
   private databaseFacadeService = inject(DatabaseFacadeService);
 
-  get inactive() {
-    return !this.pokemon()?.isOwned;
+  constructor() {
+    super();
+
+    effect(() => {
+      const pokemon = this.pokemon();
+      if (pokemon) {
+        this.natureClass = pokemon.nature
+        && this.databaseFacadeService.isNature(pokemon.nature)
+          ? pokemon.nature.toLowerCase()
+          : '';
+        this.dbpokemon$ = this.databaseFacadeService.findPokemon(pokemon?.name);
+        this.moves$ = forkJoin(pokemon.moves.map(move => {
+          return this.databaseFacadeService.findMove(move);
+        }));
+
+
+      }
+    });
   }
 
   isPokemon(p: Pokemon | undefined): p is Pokemon {
     return !!p && ('item' in p || 'ivs' in p || 'evs' in p || 'dynamaxLevel' in p);
   }
 
-  ngOnInit(): void {
-    this.initPokemonAttributes();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.initPokemonAttributes();
-  }
-
-  initPokemonAttributes(): void {
-    const pokemon = this.pokemon();
-    if (pokemon) {
-      this.natureClass = pokemon.nature
-      && this.databaseFacadeService.isNature(pokemon.nature)
-        ? pokemon.nature.toLowerCase()
-        : '';
-      this.dbpokemon$ = this.databaseFacadeService.findPokemon(pokemon?.name);
-      this.moves$ = forkJoin(pokemon.moves.map(move => {
-        return this.databaseFacadeService.findMove(move);
-      }));
-
-
-    }
-  }
 }
