@@ -1,27 +1,21 @@
-@if ((this.dataSource.connect() | async); as items) {
+@if ((this.dataSource.connect() | async)) {
+  @for (item of dataSource.filteredData; track item) {
 
-  @for (item of dataSource.filteredData; track trackByFn($index, item)) {
+    @let poke = item.pokemon();
 
-
-    @switch (appearance()) {
-      @case ('minimal') {
-
-        <app-minimal [pokemon]="item.pokemon()"/>
-
-      }
-      @case ('normal') {
-
-        <app-normal [pokemon]="item.pokemon()"/>
-
-      }
-      @case ('detailed') {
-
-        <app-detailed [pokemon]="item.pokemon()"/>
-
+    @if (poke) {
+      @switch (appearance()) {
+        @case ('minimal') {
+          <app-minimal [pokemon]="poke"/>
+        }
+        @case ('normal') {
+          <app-normal [pokemon]="poke"/>
+        }
+        @case ('detailed') {
+          <app-detailed [pokemon]="poke"/>
+        }
       }
     }
-
-
   }
 
 }

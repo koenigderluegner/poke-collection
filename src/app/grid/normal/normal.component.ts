@@ -4,7 +4,6 @@ import { PokemonComponent } from '../../icon/pokemon/pokemon.component';
 import { ItemComponent } from '../../icon/item/item.component';
 import { MatIcon } from '@angular/material/icon';
 import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
-import { Pokemon } from '@shared/interfaces/pokemon';
 
 @Component({
   selector: 'app-normal',
@@ -19,12 +18,7 @@ import { Pokemon } from '@shared/interfaces/pokemon';
   ],
   host: {
     'class': 'grid-item',
-  }
+  },
 })
 export class NormalComponent extends GridBaseAppearanceDirective {
-
-  isPokemon(p: Pokemon | undefined): p is Pokemon {
-    return !!p && 'item' in p;
-  }
-
 }

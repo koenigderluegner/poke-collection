@@ -1,9 +1,8 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, computed, ViewEncapsulation } from '@angular/core';
 import { GridBaseAppearanceDirective } from '../components/grid-base-appearance.directive';
 import { PokemonComponent } from '../../icon/pokemon/pokemon.component';
 import { ItemComponent } from '../../icon/item/item.component';
 import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
-import { Pokemon } from '@shared/interfaces/pokemon';
 
 @Component({
   selector: 'app-minimal[pokemon]',
@@ -17,17 +16,10 @@ import { Pokemon } from '@shared/interfaces/pokemon';
   ],
   host: {
     'class': 'grid-item',
-    '[class.inactive]': 'inactive',
+    '[class.inactive]': 'inactive()',
   }
 })
 export class MinimalComponent extends GridBaseAppearanceDirective {
 
-  get inactive(): boolean {
-    return !this.pokemon()?.isOwned;
-  }
-
-
-  isPokemon(p: Pokemon | undefined): p is Pokemon {
-    return !!p && 'item' in p;
-  }
+  inactive = computed(() => !this.pokemon()?.isOwned);
 }

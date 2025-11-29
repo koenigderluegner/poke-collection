@@ -8,8 +8,8 @@ import { categoriesOf } from '@shared/functions/pokemon-categories.function';
     }
   }
 )
-export abstract class GridBaseAppearanceDirective {
-  pokemon = input<Pokemon>();
+export class GridBaseAppearanceDirective {
+  protected pokemon = input.required<Pokemon>();
   protected categories = computed(() => categoriesOf(this.pokemon()));
 
 }

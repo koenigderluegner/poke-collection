@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    @if (isPokemon(poke) && (poke.ivs || poke.evs)) {
+    @if ((poke.ivs || poke.evs)) {
       <div class="detailed-stats row {{natureClass}}"
            [class.ev-iv]="poke.ivs && poke.evs">
         <div class="detailed-label dark-bg t-align-center">Stats</div>
@@ -91,7 +91,7 @@
         }
       </div>
     }
-    @if (isPokemon(poke) && poke.dynamaxLevel) {
+    @if (poke.dynamaxLevel) {
       <div class="detailed-dynamax row ">
         <div class="detailed-label dark-bg">Dynamax Level</div>
         <ul>
@@ -113,7 +113,7 @@
         <span class="detailed-text">{{ poke.nature }}</span>
       </div>
     }
-    @if (isPokemon(poke) && poke.item) {
+    @if (poke.item) {
       <div class="detailed-nature row ">
         <div class="detailed-label dark-bg">Item</div>
         <span class="detailed-text">
@@ -125,14 +125,14 @@
     @if (moves$ | async; as moves) {
       <div class="detailed-moves">
 
-          @for (move of poke.moves; track move; let i = $index) {
+        @for (move of poke.moves; track move; let i = $index) {
 
-            @if (move) {
-              <app-detailed-move [move]="move"
-                                 [type]="(moves[i]?.type ? moves[i].type : 'unknown')"/>
-            }
-
+          @if (move) {
+            <app-detailed-move [move]="move"
+                               [type]="(moves[i]?.type ? moves[i].type : 'unknown')"/>
           }
+
+        }
 
       </div>
     }

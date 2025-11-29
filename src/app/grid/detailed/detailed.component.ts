@@ -11,7 +11,6 @@ import { PokemonComponent } from '../../icon/pokemon/pokemon.component';
 import { TypeBadgeComponent } from '@shared/components/type-badge/type-badge.component';
 import { MatIcon } from '@angular/material/icon';
 import { DetailedMoveComponent } from '../detailed-move/detailed-move.component';
-import { Pokemon } from '@shared/interfaces/pokemon';
 
 @Component({
   selector: 'app-detailed',
@@ -56,10 +55,6 @@ export class DetailedComponent extends GridBaseAppearanceDirective {
 
       }
     });
-  }
-
-  isPokemon(p: Pokemon | undefined): p is Pokemon {
-    return !!p && ('item' in p || 'ivs' in p || 'evs' in p || 'dynamaxLevel' in p);
   }
 
 }
