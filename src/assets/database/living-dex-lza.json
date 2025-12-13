@@ -1053,16 +1053,13 @@
         "shinyLocked": true
       },
       {
-        "slug": "cobalion",
-        "shinyLocked": true
+        "slug": "cobalion"
       },
       {
-        "slug": "terrakion",
-        "shinyLocked": true
+        "slug": "terrakion"
       },
       {
-        "slug": "virizion",
-        "shinyLocked": true
+        "slug": "virizion"
       },
       {
         "slug": "keldeo",
@@ -1097,12 +1094,10 @@
         "shinyLocked": true
       },
       {
-        "slug": "latias",
-        "shinyLocked": true
+        "slug": "latias"
       },
       {
-        "slug": "latios",
-        "shinyLocked": true
+        "slug": "latios"
       },
       {
         "slug": "kyogre",
