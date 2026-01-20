@@ -2490,6 +2490,835 @@
     ]
   },
   {
+    "name": "Dynamax Adventures",
+    "pokemon": [
+      {
+        "slug": "ivysaur"
+      },
+      {
+        "slug": "charmeleon"
+      },
+      {
+        "slug": "wartortle"
+      },
+      {
+        "slug": "butterfree"
+      },
+      {
+        "slug": "raichu"
+      },
+      {
+        "slug": "raichu-alola"
+      },
+      {
+        "slug": "sandslash"
+      },
+      {
+        "slug": "sandslash-alola"
+      },
+      {
+        "slug": "nidoqueen"
+      },
+      {
+        "slug": "nidoking"
+      },
+      {
+        "slug": "clefairy"
+      },
+      {
+        "slug": "clefable"
+      },
+      {
+        "slug": "jigglypuff"
+      },
+      {
+        "slug": "wigglytuff"
+      },
+      {
+        "slug": "gloom"
+      },
+      {
+        "slug": "vileplume"
+      },
+      {
+        "slug": "dugtrio"
+      },
+      {
+        "slug": "dugtrio-alola"
+      },
+      {
+        "slug": "persian"
+      },
+      {
+        "slug": "persian-alola"
+      },
+      {
+        "slug": "golduck"
+      },
+      {
+        "slug": "poliwrath"
+      },
+      {
+        "slug": "kadabra"
+      },
+      {
+        "slug": "machoke"
+      },
+      {
+        "slug": "tentacruel"
+      },
+      {
+        "slug": "slowbro"
+      },
+      {
+        "slug": "magneton"
+      },
+      {
+        "slug": "haunter"
+      },
+      {
+        "slug": "kingler"
+      },
+      {
+        "slug": "exeggutor"
+      },
+      {
+        "slug": "marowak"
+      },
+      {
+        "slug": "marowak-alola"
+      },
+      {
+        "slug": "hitmonlee"
+      },
+      {
+        "slug": "hitmonchan"
+      },
+      {
+        "slug": "lickitung"
+      },
+      {
+        "slug": "weezing"
+      },
+      {
+        "slug": "weezing-galar"
+      },
+      {
+        "slug": "rhydon"
+      },
+      {
+        "slug": "chansey"
+      },
+      {
+        "slug": "tangela"
+      },
+      {
+        "slug": "kangaskhan"
+      },
+      {
+        "slug": "seadra"
+      },
+      {
+        "slug": "seaking"
+      },
+      {
+        "slug": "starmie"
+      },
+      {
+        "slug": "mr-mime"
+      },
+      {
+        "slug": "mr-mime-galar"
+      },
+      {
+        "slug": "scyther"
+      },
+      {
+        "slug": "jynx"
+      },
+      {
+        "slug": "electabuzz"
+      },
+      {
+        "slug": "magmar"
+      },
+      {
+        "slug": "tauros"
+      },
+      {
+        "slug": "ditto"
+      },
+      {
+        "slug": "vaporeon"
+      },
+      {
+        "slug": "jolteon"
+      },
+      {
+        "slug": "flareon"
+      },
+      {
+        "slug": "porygon"
+      },
+      {
+        "slug": "dragonair"
+      },
+      {
+        "slug": "noctowl"
+      },
+      {
+        "slug": "lanturn"
+      },
+      {
+        "slug": "togetic"
+      },
+      {
+        "slug": "xatu"
+      },
+      {
+        "slug": "bellossom"
+      },
+      {
+        "slug": "azumarill"
+      },
+      {
+        "slug": "sudowoodo"
+      },
+      {
+        "slug": "politoed"
+      },
+      {
+        "slug": "quagsire"
+      },
+      {
+        "slug": "slowking"
+      },
+      {
+        "slug": "dunsparce"
+      },
+      {
+        "slug": "qwilfish"
+      },
+      {
+        "slug": "sneasel"
+      },
+      {
+        "slug": "piloswine"
+      },
+      {
+        "slug": "octillery"
+      },
+      {
+        "slug": "mantine"
+      },
+      {
+        "slug": "skarmory"
+      },
+      {
+        "slug": "hitmontop"
+      },
+      {
+        "slug": "miltank"
+      },
+      {
+        "slug": "grovyle"
+      },
+      {
+        "slug": "sceptile"
+      },
+      {
+        "slug": "combusken"
+      },
+      {
+        "slug": "blaziken"
+      },
+      {
+        "slug": "marshtomp"
+      },
+      {
+        "slug": "swampert"
+      },
+      {
+        "slug": "linoone"
+      },
+      {
+        "slug": "linoone-galar"
+      },
+      {
+        "slug": "pelipper"
+      },
+      {
+        "slug": "ninjask"
+      },
+      {
+        "slug": "exploud"
+      },
+      {
+        "slug": "lairon"
+      },
+      {
+        "slug": "manectric"
+      },
+      {
+        "slug": "roselia"
+      },
+      {
+        "slug": "sharpedo"
+      },
+      {
+        "slug": "wailmer"
+      },
+      {
+        "slug": "torkoal"
+      },
+      {
+        "slug": "flygon"
+      },
+      {
+        "slug": "altaria"
+      },
+      {
+        "slug": "whiscash"
+      },
+      {
+        "slug": "crawdaunt"
+      },
+      {
+        "slug": "claydol"
+      },
+      {
+        "slug": "cradily"
+      },
+      {
+        "slug": "armaldo"
+      },
+      {
+        "slug": "dusclops"
+      },
+      {
+        "slug": "absol"
+      },
+      {
+        "slug": "glalie"
+      },
+      {
+        "slug": "sealeo"
+      },
+      {
+        "slug": "relicanth"
+      },
+      {
+        "slug": "metang"
+      },
+      {
+        "slug": "luxray"
+      },
+      {
+        "slug": "vespiquen"
+      },
+      {
+        "slug": "cherrim"
+      },
+      {
+        "slug": "gastrodon"
+      },
+      {
+        "slug": "drifblim"
+      },
+      {
+        "slug": "lopunny"
+      },
+      {
+        "slug": "skuntank"
+      },
+      {
+        "slug": "bronzong"
+      },
+      {
+        "slug": "munchlax"
+      },
+      {
+        "slug": "drapion"
+      },
+      {
+        "slug": "abomasnow"
+      },
+      {
+        "slug": "froslass"
+      },
+      {
+        "slug": "rotom"
+      },
+      {
+        "slug": "stoutland"
+      },
+      {
+        "slug": "liepard"
+      },
+      {
+        "slug": "musharna"
+      },
+      {
+        "slug": "unfezant"
+      },
+      {
+        "slug": "boldore"
+      },
+      {
+        "slug": "swoobat"
+      },
+      {
+        "slug": "audino"
+      },
+      {
+        "slug": "gurdurr"
+      },
+      {
+        "slug": "palpitoad"
+      },
+      {
+        "slug": "seismitoad"
+      },
+      {
+        "slug": "scolipede"
+      },
+      {
+        "slug": "whimsicott"
+      },
+      {
+        "slug": "lilligant"
+      },
+      {
+        "slug": "basculin"
+      },
+      {
+        "slug": "basculin-blue-striped"
+      },
+      {
+        "slug": "krookodile"
+      },
+      {
+        "slug": "maractus"
+      },
+      {
+        "slug": "crustle"
+      },
+      {
+        "slug": "sigilyph"
+      },
+      {
+        "slug": "cofagrigus"
+      },
+      {
+        "slug": "garbodor"
+      },
+      {
+        "slug": "cinccino"
+      },
+      {
+        "slug": "vanillish"
+      },
+      {
+        "slug": "emolga"
+      },
+      {
+        "slug": "escavalier"
+      },
+      {
+        "slug": "amoonguss"
+      },
+      {
+        "slug": "jellicent"
+      },
+      {
+        "slug": "galvantula"
+      },
+      {
+        "slug": "klang"
+      },
+      {
+        "slug": "klinklang"
+      },
+      {
+        "slug": "beheeyem"
+      },
+      {
+        "slug": "lampent"
+      },
+      {
+        "slug": "fraxure"
+      },
+      {
+        "slug": "beartic"
+      },
+      {
+        "slug": "cryogonal"
+      },
+      {
+        "slug": "accelgor"
+      },
+      {
+        "slug": "stunfisk"
+      },
+      {
+        "slug": "stunfisk-galar"
+      },
+      {
+        "slug": "mienshao"
+      },
+      {
+        "slug": "druddigon"
+      },
+      {
+        "slug": "golurk"
+      },
+      {
+        "slug": "bisharp"
+      },
+      {
+        "slug": "bouffalant"
+      },
+      {
+        "slug": "heatmor"
+      },
+      {
+        "slug": "durant"
+      },
+      {
+        "slug": "diggersby"
+      },
+      {
+        "slug": "talonflame"
+      },
+      {
+        "slug": "pangoro"
+      },
+      {
+        "slug": "doublade"
+      },
+      {
+        "slug": "malamar"
+      },
+      {
+        "slug": "barbaracle"
+      },
+      {
+        "slug": "heliolisk"
+      },
+      {
+        "slug": "tyrantrum"
+      },
+      {
+        "slug": "aurorus"
+      },
+      {
+        "slug": "hawlucha"
+      },
+      {
+        "slug": "dedenne"
+      },
+      {
+        "slug": "klefki"
+      },
+      {
+        "slug": "trevenant"
+      },
+      {
+        "slug": "gourgeist"
+      },
+      {
+        "slug": "charjabug"
+      },
+      {
+        "slug": "vikavolt"
+      },
+      {
+        "slug": "ribombee"
+      },
+      {
+        "slug": "lycanroc"
+      },
+      {
+        "slug": "lycanroc-midnight"
+      },
+      {
+        "slug": "mudsdale"
+      },
+      {
+        "slug": "araquanid"
+      },
+      {
+        "slug": "lurantis"
+      },
+      {
+        "slug": "shiinotic"
+      },
+      {
+        "slug": "salazzle"
+      },
+      {
+        "slug": "bewear"
+      },
+      {
+        "slug": "tsareena"
+      },
+      {
+        "slug": "comfey"
+      },
+      {
+        "slug": "oranguru"
+      },
+      {
+        "slug": "passimian"
+      },
+      {
+        "slug": "palossand"
+      },
+      {
+        "slug": "pyukumuku"
+      },
+      {
+        "slug": "togedemaru"
+      },
+      {
+        "slug": "mimikyu"
+      },
+      {
+        "slug": "greedent"
+      },
+      {
+        "slug": "orbeetle"
+      },
+      {
+        "slug": "thievul"
+      },
+      {
+        "slug": "eldegoss"
+      },
+      {
+        "slug": "dubwool"
+      },
+      {
+        "slug": "drednaw"
+      },
+      {
+        "slug": "boltund"
+      },
+      {
+        "slug": "carkol"
+      },
+      {
+        "slug": "coalossal"
+      },
+      {
+        "slug": "sandaconda"
+      },
+      {
+        "slug": "cramorant"
+      },
+      {
+        "slug": "barraskewda"
+      },
+      {
+        "slug": "toxtricity"
+      },
+      {
+        "slug": "centiskorch"
+      },
+      {
+        "slug": "grapploct"
+      },
+      {
+        "slug": "polteageist"
+      },
+      {
+        "slug": "hatterene"
+      },
+      {
+        "slug": "grimmsnarl"
+      },
+      {
+        "slug": "obstagoon"
+      },
+      {
+        "slug": "perrserker"
+      },
+      {
+        "slug": "alcremie"
+      },
+      {
+        "slug": "falinks"
+      },
+      {
+        "slug": "pincurchin"
+      },
+      {
+        "slug": "frosmoth"
+      },
+      {
+        "slug": "indeedee"
+      },
+      {
+        "slug": "morpeko"
+      },
+      {
+        "slug": "copperajah"
+      },
+      {
+        "slug": "duraludon"
+      },
+      {
+        "slug": "drakloak"
+      }
+    ]
+  },
+  {
+    "name": "Dynamax Adventures Legendaries",
+    "pokemon": [
+      {
+        "slug": "articuno"
+      },
+      {
+        "slug": "zapdos"
+      },
+      {
+        "slug": "moltres"
+      },
+      {
+        "slug": "mewtwo"
+      },
+      {
+        "slug": "raikou"
+      },
+      {
+        "slug": "entei"
+      },
+      {
+        "slug": "suicune"
+      },
+      {
+        "slug": "lugia"
+      },
+      {
+        "slug": "ho-oh"
+      },
+      {
+        "slug": "latias"
+      },
+      {
+        "slug": "latios"
+      },
+      {
+        "slug": "kyogre"
+      },
+      {
+        "slug": "groudon"
+      },
+      {
+        "slug": "rayquaza"
+      },
+      {
+        "slug": "uxie"
+      },
+      {
+        "slug": "mesprit"
+      },
+      {
+        "slug": "azelf"
+      },
+      {
+        "slug": "dialga"
+      },
+      {
+        "slug": "palkia"
+      },
+      {
+        "slug": "heatran"
+      },
+      {
+        "slug": "giratina"
+      },
+      {
+        "slug": "cresselia"
+      },
+      {
+        "slug": "tornadus"
+      },
+      {
+        "slug": "thundurus"
+      },
+      {
+        "slug": "reshiram"
+      },
+      {
+        "slug": "zekrom"
+      },
+      {
+        "slug": "landorus"
+      },
+      {
+        "slug": "kyurem"
+      },
+      {
+        "slug": "xerneas"
+      },
+      {
+        "slug": "yveltal"
+      },
+      {
+        "slug": "zygarde"
+      },
+      {
+        "slug": "tapu-koko"
+      },
+      {
+        "slug": "tapu-lele"
+      },
+      {
+        "slug": "tapu-bulu"
+      },
+      {
+        "slug": "tapu-fini"
+      },
+      {
+        "slug": "solgaleo"
+      },
+      {
+        "slug": "lunala"
+      },
+      {
+        "slug": "nihilego"
+      },
+      {
+        "slug": "buzzwole"
+      },
+      {
+        "slug": "pheromosa"
+      },
+      {
+        "slug": "xurkitree"
+      },
+      {
+        "slug": "celesteela"
+      },
+      {
+        "slug": "kartana"
+      },
+      {
+        "slug": "guzzlord"
+      },
+      {
+        "slug": "necrozma"
+      },
+      {
+        "slug": "stakataka"
+      },
+      {
+        "slug": "blacephalon"
+      }
+    ]
+  },
+  {
     "name": "Extra Regionals",
     "pokemon": [
       {
