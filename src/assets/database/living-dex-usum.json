@@ -1223,5 +1223,222 @@
         "slug": "zeraora"
       }
     ]
+  },
+  {
+    "name": "White Wormhole",
+    "pokemon": [
+      {
+        "slug": "nihilego"
+      },
+      {
+        "slug": "buzzwole"
+      },
+      {
+        "slug": "pheromosa"
+      },
+      {
+        "slug": "xurkitree"
+      },
+      {
+        "slug": "celesteela"
+      },
+      {
+        "slug": "kartana"
+      },
+      {
+        "slug": "guzzlord"
+      }
+    ]
+  },
+  {
+    "name": "Blue Wormhole",
+    "pokemon": [
+      {
+        "slug": "quagsire"
+      },
+      {
+        "slug": "lombre"
+      },
+      {
+        "slug": "floatzel"
+      },
+      {
+        "slug": "stunfisk"
+      },
+      {
+        "slug": "barbaracle"
+      },
+      {
+        "slug": "suicune"
+      },
+      {
+        "slug": "lugia"
+      },
+      {
+        "slug": "latias"
+      },
+      {
+        "slug": "latios"
+      },
+      {
+        "slug": "kyogre"
+      },
+      {
+        "slug": "uxie"
+      },
+      {
+        "slug": "mesprit"
+      },
+      {
+        "slug": "azelf"
+      },
+      {
+        "slug": "kyurem"
+      }
+    ]
+  },
+  {
+    "name": "Green Wormhole",
+    "pokemon": [
+      {
+        "slug": "nuzleaf"
+      },
+      {
+        "slug": "grumpig"
+      },
+      {
+        "slug": "drapion"
+      },
+      {
+        "slug": "audino"
+      },
+      {
+        "slug": "heliolisk"
+      },
+      {
+        "slug": "mewtwo"
+      },
+      {
+        "slug": "raikou"
+      },
+      {
+        "slug": "entei"
+      },
+      {
+        "slug": "dialga"
+      },
+      {
+        "slug": "cobalion"
+      },
+      {
+        "slug": "terrakion"
+      },
+      {
+        "slug": "virizion"
+      },
+      {
+        "slug": "reshiram"
+      },
+      {
+        "slug": "zekrom"
+      },
+      {
+        "slug": "xerneas"
+      }
+    ]
+  },
+  {
+    "name": "Red Wormhole",
+    "pokemon": [
+      {
+        "slug": "swellow"
+      },
+      {
+        "slug": "altaria"
+      },
+      {
+        "slug": "yanmega"
+      },
+      {
+        "slug": "sigilyph"
+      },
+      {
+        "slug": "swanna"
+      },
+      {
+        "slug": "articuno"
+      },
+      {
+        "slug": "zapdos"
+      },
+      {
+        "slug": "moltres"
+      },
+      {
+        "slug": "ho-oh"
+      },
+      {
+        "slug": "rayquaza"
+      },
+      {
+        "slug": "cresselia"
+      },
+      {
+        "slug": "tornadus"
+      },
+      {
+        "slug": "thundurus"
+      },
+      {
+        "slug": "landorus"
+      },
+      {
+        "slug": "yveltal"
+      }
+    ]
+  },
+  {
+    "name": "Yellow Wormhole",
+    "pokemon": [
+      {
+        "slug": "magcargo"
+      },
+      {
+        "slug": "medicham"
+      },
+      {
+        "slug": "hippowdon"
+      },
+      {
+        "slug": "abomasnow"
+      },
+      {
+        "slug": "crustle"
+      },
+      {
+        "slug": "regirock"
+      },
+      {
+        "slug": "regice"
+      },
+      {
+        "slug": "registeel"
+      },
+      {
+        "slug": "groudon"
+      },
+      {
+        "slug": "palkia"
+      },
+      {
+        "slug": "heatran"
+      },
+      {
+        "slug": "regigigas"
+      },
+      {
+        "slug": "giratina"
+      }
+    ]
   }
 ]
