@@ -1226,6 +1226,9 @@
   },
   {
     "name": "White Wormhole",
+    "references": [
+      "https://www.serebii.net/ultrasunultramoon/ultrawormholes.shtml#white"
+    ],
     "pokemon": [
       {
         "slug": "nihilego"
@@ -1252,6 +1255,9 @@
   },
   {
     "name": "Blue Wormhole",
+    "references": [
+      "https://www.serebii.net/ultrasunultramoon/ultrawormholes.shtml#blue"
+    ],
     "pokemon": [
       {
         "slug": "quagsire"
@@ -1299,6 +1305,9 @@
   },
   {
     "name": "Green Wormhole",
+    "references": [
+      "https://www.serebii.net/ultrasunultramoon/ultrawormholes.shtml#green"
+    ],
     "pokemon": [
       {
         "slug": "nuzleaf"
@@ -1349,6 +1358,9 @@
   },
   {
     "name": "Red Wormhole",
+    "references": [
+      "https://www.serebii.net/ultrasunultramoon/ultrawormholes.shtml#red"
+    ],
     "pokemon": [
       {
         "slug": "swellow"
@@ -1399,6 +1411,9 @@
   },
   {
     "name": "Yellow Wormhole",
+    "references": [
+      "https://www.serebii.net/ultrasunultramoon/ultrawormholes.shtml#yellow"
+    ],
     "pokemon": [
       {
         "slug": "magcargo"
