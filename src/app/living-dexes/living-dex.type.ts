@@ -3,6 +3,7 @@ export type LivingDex = {
   references?: string[],
   pokemon: {
     slug: string;
-    shinyLocked?: true
+    shinyLocked?: true,
+    requiredAsMale?: true
   }[];
 }

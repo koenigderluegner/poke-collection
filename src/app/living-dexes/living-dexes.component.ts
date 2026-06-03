@@ -68,13 +68,27 @@ export class LivingDexesComponent {
 
     const flattenedDexes = [...dexes].flat();
     const allPokemonCombined = flattenedDexes.flatMap(d => d.pokemon).map(pokemon => pokemon.slug);
-    const matchingFemaleAppearances = [...new Set(allPokemonCombined).intersection(GenderDifferencesSpecies)].map(slug => ({slug: `${slug}-f`}));
+    const femalesAppreances = new Set(allPokemonCombined).intersection(GenderDifferencesSpecies);
+    const matchingFemaleAppearances = [...femalesAppreances].map(slug => ({slug: `${slug}-f`}));
     if (matchingFemaleAppearances.length) {
+
+      for (let flattenedDex of flattenedDexes) {
+        flattenedDex.pokemon.map(p => {
+          if (femalesAppreances.has(p.slug)) {
+            p['requiredAsMale'] = true;
+          }
+          return p;
+        });
+      }
+
+
       flattenedDexes.push({
         name: 'Gender Differences',
         pokemon: matchingFemaleAppearances
       });
     }
+
+
     return flattenedDexes.map((d: LivingDex) => {
       const chunks = d.pokemon.filter(p => {
         if (!this.showOnlyUnowned()) return true;

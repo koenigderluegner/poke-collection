@@ -53,7 +53,13 @@
                        [matTooltip]="pokemon.slug + (pokemon.shinyLocked ? ' - shiny locked' : '')">
                     <div class="icon">
                       <app-pokemon [class.shiny-locked]="pokemon.shinyLocked" shiny
+
                                    [slug]="pokemon.slug"/>
+                      @if (pokemon.requiredAsMale) {
+                        <span class="male-indicator">
+                        ♂️
+                      </span>
+                      }
                     </div>
 
                   </div>

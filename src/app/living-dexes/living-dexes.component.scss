@@ -107,6 +107,12 @@ $categories: 'uncategorized',
   }
 }
 
+.male-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 40px;
+}
+
 @media (prefers-color-scheme: dark) {
   .grid.minimal .grid-item {
     background: rgb(0 0 0 / 22%);
