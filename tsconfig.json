@@ -10,11 +10,11 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "module": "es2020",
+    "module": "es2022",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "importHelpers": true,
-    "target": "ES2022",
+    "target": "esnext",
     "typeRoots": [
       "node_modules/@types"
     ],

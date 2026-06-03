@@ -10,6 +10,7 @@ import { SpreadsheetFacade } from '@spreadsheet/spreadsheet.facade';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { GenderDifferencesSpecies } from './gender-differences-species';
 
 type CheckedLivingDexEntry = LivingDex['pokemon'][0] & {
   shiny: boolean
@@ -35,9 +36,6 @@ type CheckedLivingDexEntry = LivingDex['pokemon'][0] & {
 export class LivingDexesComponent {
   dexId = input<string>();
   livingDex = inject(LivingDexService);
-  #router = inject(Router);
-  #route = inject(ActivatedRoute);
-
   // TODO eagerly loads all requests, optimize
   dexes = new Map([
       ['home', this.livingDex.getHomeDex()],
@@ -49,11 +47,8 @@ export class LivingDexesComponent {
       ['lza', this.livingDex.getLZADex()],
     ]
   );
-
   currentSpreadsheet = inject(SpreadsheetFacade).currentSpreadsheet;
-
   readonly CHUNK_SIZE = 30;
-
   currentDex: Signal<HttpResourceRef<LivingDex[] | undefined> | undefined> = computed(() => {
     const key = this.dexId();
     return this.dexes.get(!!key ? key : 'home');
@@ -71,7 +66,16 @@ export class LivingDexesComponent {
     const currentsheet = this.currentSpreadsheet();
     const checkList = currentsheet?.livingDexChecklist ?? [];
 
-    return [...dexes].flat().map((d: LivingDex) => {
+    const flattenedDexes = [...dexes].flat();
+    const allPokemonCombined = flattenedDexes.flatMap(d => d.pokemon).map(pokemon => pokemon.slug);
+    const matchingFemaleAppearances = [...new Set(allPokemonCombined).intersection(GenderDifferencesSpecies)].map(slug => ({slug: `${slug}-f`}));
+    if (matchingFemaleAppearances.length) {
+      flattenedDexes.push({
+        name: 'Gender Differences',
+        pokemon: matchingFemaleAppearances
+      });
+    }
+    return flattenedDexes.map((d: LivingDex) => {
       const chunks = d.pokemon.filter(p => {
         if (!this.showOnlyUnowned()) return true;
         if (p.shinyLocked) return false;
@@ -96,6 +100,8 @@ export class LivingDexesComponent {
       return {...d, pokemon: chunks};
     }).filter(d => d.pokemon.length > 0);
   });
+  #router = inject(Router);
+  #route = inject(ActivatedRoute);
 
   constructor() {
     effect(() => {
