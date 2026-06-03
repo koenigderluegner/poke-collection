@@ -2,7 +2,7 @@
   <div class="Loading-wrapper">
     <app-spinner [class.pause-animation]="!!currentSpreadsheet.error()"/>
     <span
-      class="message">{{ loadingMessage }} {{ foundCachedSheet() }} {{ databasesLoaded() }} {{ resolvedOrUnnecessary() }}</span>
+      class="message">{{ loadingMessage }}</span>
   </div>
 } @else {
   <app-header/>
