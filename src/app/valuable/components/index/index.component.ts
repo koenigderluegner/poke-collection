@@ -3,7 +3,7 @@ import { SpreadsheetFacade } from '@spreadsheet/spreadsheet.facade';
 import { GridControllerComponent } from '../../../grid/grid-controller/grid-controller.component';
 import { SubNaviItemComponent } from '@shared/components/sub-navi-item/sub-navi-item.component';
 import { ItemComponent } from '../../../icon/item/item.component';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
 
 @Component({
@@ -14,7 +14,9 @@ import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
     SubNaviItemComponent,
     ItemComponent,
     RouterOutlet,
-    SlugifyPipe
+    SlugifyPipe,
+    RouterLink,
+    RouterLinkActive,
   ],
   host: {
     'class': 'view'

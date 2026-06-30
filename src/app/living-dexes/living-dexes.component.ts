@@ -9,7 +9,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { SpreadsheetFacade } from '@spreadsheet/spreadsheet.facade';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { GenderDifferencesSpecies } from './gender-differences-species';
 
 type CheckedLivingDexEntry = LivingDex['pokemon'][0] & {
@@ -25,7 +25,9 @@ type CheckedLivingDexEntry = LivingDex['pokemon'][0] & {
     PokemonComponent,
     MatTooltip,
     MatCheckbox,
-    FormsModule
+    FormsModule,
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './living-dexes.component.html',
   styleUrl: './living-dexes.component.scss',
@@ -47,6 +49,16 @@ export class LivingDexesComponent {
       ['lza', this.livingDex.getLZADex()],
     ]
   );
+
+  protected readonly links: { routerLink: RouterLink['routerLink'], label: string }[] = [
+    {label: 'Home', routerLink: '/dex/home'},
+    {label: 'Legends Z-A', routerLink: '/dex/lza'},
+    {label: 'Scarlet/Violet', routerLink: '/dex/sv'},
+    {label: 'Legends Arceus', routerLink: '/dex/la'},
+    {label: 'Brilliant Diamond/Shining Pearl', routerLink: '/dex/bdsp'},
+    {label: 'Sword/Shield', routerLink: '/dex/swsh'},
+    {label: 'Ultra Sun/Ultra Moon', routerLink: '/dex/usum'},
+  ];
   currentSpreadsheet = inject(SpreadsheetFacade).currentSpreadsheet;
   readonly CHUNK_SIZE = 30;
   currentDex: Signal<HttpResourceRef<LivingDex[] | undefined> | undefined> = computed(() => {

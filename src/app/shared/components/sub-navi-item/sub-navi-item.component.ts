@@ -1,33 +1,25 @@
-import { Component, inject, input, ViewEncapsulation } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, computed, input, ViewEncapsulation } from '@angular/core';
 import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-sub-navi-item',
+  selector: 'a[app-sub-navi-item]',
   templateUrl: './sub-navi-item.component.html',
   styleUrls: ['./sub-navi-item.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  imports: [
-    RouterLink,
-    SlugifyPipe,
-  ],
+  imports: [],
   host: {
     'class': 'sub-navi-item',
+    '[class]': 'classes()',
   },
-  hostDirectives: [
-    {
-      directive: RouterLink,
-      inputs: ['queryParamsHandling', 'routerLink: link'],
-    }, {
-      directive: RouterLinkActive,
-    },
-  ]
+  providers: [SlugifyPipe],
 })
 export class SubNaviItemComponent {
   readonly text = input<string>();
   readonly meta = input<string>();
-  protected readonly routerLink: RouterLink = inject(RouterLink, {self: true});
-  protected readonly routerLinkActive = toSignal(inject(RouterLinkActive, {self: true}).isActiveChange);
+  slugifyPipe = new SlugifyPipe();
+
+  classes = computed(() => {
+    this.slugifyPipe.transform(this.text());
+  });
 
 }

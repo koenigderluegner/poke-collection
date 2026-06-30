@@ -7,14 +7,15 @@
     <ul class="sub-navi">
 
       @for (worksheet of worksheets(); track worksheet) {
-        <app-sub-navi-item [link]="['/', 'valuables', worksheet.title | slugify]"
-
-                           [text]="worksheet.title"
-                           [meta]="''+worksheet.data?.length">
+        <a app-sub-navi-item
+           [routerLink]="['/', 'valuables', worksheet.title | slugify]"
+           [text]="worksheet.title"
+           [meta]="''+worksheet.data?.length"
+           routerLinkActive="active">
           @if (worksheet.config?.subType) {
             <app-item [slug]="(getItemMapping(worksheet.config?.subType) | slugify)"/>
           }
-        </app-sub-navi-item>
+        </a>
       }
 
     </ul>
