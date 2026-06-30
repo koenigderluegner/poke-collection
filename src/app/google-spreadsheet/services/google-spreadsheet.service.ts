@@ -1,12 +1,10 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Service } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GoogleSpreadsheetResponse } from '../interfaces/google-spreadsheet-response.interface';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { GoogleWorksheetResponse } from '../interfaces/google-worksheet-response.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class GoogleSpreadsheetService {
   private _httpClient = inject(HttpClient);
 

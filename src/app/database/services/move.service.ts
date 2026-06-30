@@ -1,13 +1,11 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Service } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, Observable, of, throwError } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { Move } from '../models/move.interface';
 import { MoveDatabase } from '../models/move-database.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class MoveService {
   private httpClient = inject(HttpClient);
 

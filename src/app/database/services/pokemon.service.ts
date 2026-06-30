@@ -1,12 +1,10 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Service } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { switchMap, tap } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { PokemonEntry } from '../models/pokemon-entry.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class PokemonService {
   private httpClient = inject(HttpClient);
 

@@ -1,10 +1,8 @@
-import { Injectable } from '@angular/core';
 import { httpResource } from '@angular/common/http';
 import { LivingDex } from './living-dex.type';
+import { Service } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class LivingDexService {
 
   getHomeDex() {

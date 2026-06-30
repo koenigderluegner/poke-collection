@@ -1,8 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Service } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class NaturesService {
 
   private natures: string[] = ['Adamant',
@@ -29,7 +27,6 @@ export class NaturesService {
     'Sassy',
     'Serious',
     'Timid'];
-
 
 
   isNature(natureToCheck: string): boolean {

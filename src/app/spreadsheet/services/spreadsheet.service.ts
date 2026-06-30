@@ -1,4 +1,4 @@
-import { inject, Injectable, Injector, runInInjectionContext } from '@angular/core';
+import { inject, Injector, runInInjectionContext, Service } from '@angular/core';
 import { map, switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Spreadsheet } from '../models/spreadsheet';
@@ -15,9 +15,7 @@ import { API_KEY } from '../../../environments/api-key.injection-token';
 import { rxResource } from '@angular/core/rxjs-interop';
 
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class SpreadsheetService {
   spreadsheet: Spreadsheet | undefined = undefined;
   #apiKey = inject(API_KEY);
@@ -86,7 +84,6 @@ export class SpreadsheetService {
                 }
 
                 spreadsheet.hasValuables = spreadsheet.worksheets.some((ws: Worksheet) => ws.config?.type === 'Valuables');
-
 
 
                 return spreadsheet;

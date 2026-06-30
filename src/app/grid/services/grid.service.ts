@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Service } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { GridAppearanceType } from '../grid-appearance.type';
 import { MatSortable } from '@angular/material/sort';
@@ -7,9 +7,7 @@ import { FormControl } from '@angular/forms';
 import { startWith, tap } from 'rxjs/operators';
 import { OwnedStatus } from '../types/owned-status.type';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class GridService {
 
   gridAppearance: BehaviorSubject<GridAppearanceType>;

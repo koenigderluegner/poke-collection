@@ -1,4 +1,4 @@
-import { effect, inject, Injectable, linkedSignal, signal } from '@angular/core';
+import { effect, inject, linkedSignal, Service, signal } from '@angular/core';
 import { Spreadsheet } from './models/spreadsheet';
 import { SpreadsheetService } from './services/spreadsheet.service';
 import { ApiError } from '@shared/interfaces/api-error.interface';
@@ -10,11 +10,12 @@ interface CachedSpreadsheet {
   value: Spreadsheet
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class SpreadsheetFacade {
   currentSpreadsheetId = signal<string>('');
+  private spreadsheetService = inject(SpreadsheetService);
+  private readonly apiKey = inject(API_KEY);
+  currentSpreadsheetRef = this.spreadsheetService.getSpreadsheet(this.currentSpreadsheetId, this.apiKey);
   // ref removes value while loading so we use linkedignal
   currentSpreadsheet = linkedSignal<Spreadsheet | undefined, Spreadsheet | undefined>({
     source: () => this.currentSpreadsheetRef.value(),
@@ -28,9 +29,6 @@ export class SpreadsheetFacade {
 
 
   });
-  private spreadsheetService = inject(SpreadsheetService);
-  private readonly apiKey = inject(API_KEY);
-  currentSpreadsheetRef = this.spreadsheetService.getSpreadsheet(this.currentSpreadsheetId, this.apiKey);
   private readonly _SPREADSHEET_CACHE_KEY = 'cachedSpreadsheet';
 
   constructor() {
