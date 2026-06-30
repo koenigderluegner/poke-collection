@@ -33,9 +33,6 @@ import { MatSelect, MatSelectTrigger } from '@angular/material/select';
   }
 })
 export class GridControllerComponent implements OnDestroy {
-  private gridService = inject(GridService);
-
-
   pokemonCategory = PokemonCategory;
   ownedStatusControl: FormControl<OwnedStatus[]>;
   hideAppearance$: Observable<boolean>;
@@ -43,6 +40,7 @@ export class GridControllerComponent implements OnDestroy {
   filter: FormControl<string>;
   sorting: FormControl<MatSortable>;
   categories: FormControl<PokemonCategory[]>;
+  private gridService = inject(GridService);
   private subscriptions: Subscription[] = [];
 
   constructor() {

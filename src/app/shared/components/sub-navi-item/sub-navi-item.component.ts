@@ -1,4 +1,4 @@
-import { Component, inject, input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, ViewEncapsulation } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -15,6 +15,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   host: {
     'class': 'sub-navi-item',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
   hostDirectives: [
     {
       directive: RouterLink,

@@ -21,10 +21,6 @@ import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
   }
 })
 export class IndexComponent {
-  private readonly currentSpreadsheet = inject(SpreadsheetFacade).currentSpreadsheet;
-
-  spreadsheetId = computed(() => this.currentSpreadsheet()?.id);
-  worksheets = computed(() => this.currentSpreadsheet()?.worksheets.filter(worksheet => worksheet.config?.type === 'Valuables'));
   subTypeItemMap: Record<string, string> = {
     events: 'cherish',
     legendaries: 'master',
@@ -32,6 +28,9 @@ export class IndexComponent {
     competitives: 'focus-sash',
     rngs: 'teachy-tv'
   };
+  private readonly currentSpreadsheet = inject(SpreadsheetFacade).currentSpreadsheet;
+  spreadsheetId = computed(() => this.currentSpreadsheet()?.id);
+  worksheets = computed(() => this.currentSpreadsheet()?.worksheets.filter(worksheet => worksheet.config?.type === 'Valuables'));
 
   getItemMapping(subType?: string): string {
     if (subType) {

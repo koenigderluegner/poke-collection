@@ -5,7 +5,6 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -20,13 +19,13 @@
     ],
     "paths": {
       "@core/*": [
-        "src/app/core/*"
+        "./src/app/core/*"
       ],
       "@shared/*": [
-        "src/app/shared/*"
+        "./src/app/shared/*"
       ],
       "@spreadsheet/*": [
-        "src/app/spreadsheet/*"
+        "./src/app/spreadsheet/*"
       ]
     },
     "useDefineForClassFields": false

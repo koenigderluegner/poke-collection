@@ -21,13 +21,10 @@ import { CastValuablePipe } from '@shared/pipes/cast-valuable.pipe';
   ]
 })
 export class ValuablesComponent {
+  worksheetTitle = input<string>();
+  gridAppearance$: Observable<GridAppearanceType>;
   private currentSpreadsheet = inject(SpreadsheetFacade).currentSpreadsheet;
   private slugifyPipe = inject(SlugifyPipe);
-  private gridService = inject(GridService);
-
-  worksheetTitle = input<string>();
-
-
   worksheet = computed(() => {
 
     const spreadsheetData = this.currentSpreadsheet();
@@ -37,8 +34,7 @@ export class ValuablesComponent {
     )?.[0];
 
   });
-
-  gridAppearance$: Observable<GridAppearanceType>;
+  private gridService = inject(GridService);
 
   constructor() {
     this.gridService.updateHideOwnedStatusControl(true);

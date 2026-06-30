@@ -17,10 +17,9 @@ import { AsyncPipe } from '@angular/common';
   }
 })
 export class ChangerComponent {
-  private gridService = inject(GridService);
-
   readonly selectionChanged = output<GridAppearanceType>();
   appearance$: Observable<GridAppearanceType>;
+  private gridService = inject(GridService);
 
   constructor() {
     this.appearance$ = this.gridService.getGridAppearance$();

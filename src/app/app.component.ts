@@ -65,14 +65,14 @@ export class AppComponent implements OnInit {
 
   }
 
-  loadData(spreadsheetId: string, username?: string): void {
+  loadData(spreadsheetId: string): void {
 
 
-      this.loadingMessage = 'Load databases from server';
+    this.loadingMessage = 'Load databases from server';
 
-      this.loadingMessage = 'Loading spreadsheet from Google API';
-      setTimeout(() => this.spreadsheetFacade.currentSpreadsheetId.set(spreadsheetId), 3000);
-      this.foundCachedSheet.set(this.spreadsheetFacade.loadCachedSpreadsheet(spreadsheetId));
+    this.loadingMessage = 'Loading spreadsheet from Google API';
+    setTimeout(() => this.spreadsheetFacade.currentSpreadsheetId.set(spreadsheetId), 3000);
+    this.foundCachedSheet.set(this.spreadsheetFacade.loadCachedSpreadsheet(spreadsheetId));
 
 
   }
