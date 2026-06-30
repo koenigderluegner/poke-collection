@@ -18,16 +18,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '24'
-          cache: 'npm'
+          node-version: '26'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: npm ci --force
+        run: pnpm ci --force
 
       - name: Find and Replace API Key
         uses: jacobtomlinson/gha-find-replace@v2
@@ -38,7 +38,7 @@ jobs:
           regex: false
 
       - name: Build
-        run: npm run build -- --configuration production --base-href /poke-collection/
+        run: pnpm run build -- --configuration production --base-href /poke-collection/
 
       - name: Copy index.html to 404.html
         run: cp dist/poke-collection/browser/index.html dist/poke-collection/browser/404.html
