@@ -1,4 +1,4 @@
-export type LivingDex = {
+export interface LivingDex {
   name: string
   references?: string[],
   pokemon: {

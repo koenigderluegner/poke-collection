@@ -51,7 +51,7 @@ export class LivingDexesComponent {
   readonly CHUNK_SIZE = 30;
   currentDex: Signal<HttpResourceRef<LivingDex[] | undefined> | undefined> = computed(() => {
     const key = this.dexId();
-    return this.dexes.get(!!key ? key : 'home');
+    return this.dexes.get(key ? key : 'home');
   });
   showOnlyUnowned = model(false);
   chunkedDex = computed(() => {
@@ -72,7 +72,7 @@ export class LivingDexesComponent {
     const matchingFemaleAppearances = [...femalesAppreances].map(slug => ({slug: `${slug}-f`}));
     if (matchingFemaleAppearances.length) {
 
-      for (let flattenedDex of flattenedDexes) {
+      for (const flattenedDex of flattenedDexes) {
         flattenedDex.pokemon.map(p => {
           if (femalesAppreances.has(p.slug)) {
             p['requiredAsMale'] = true;

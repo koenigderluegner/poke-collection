@@ -1,3 +1,1 @@
-export interface UserDatabase {
-  [key: string]: string;
-}
+export type UserDatabase = Record<string, string>;

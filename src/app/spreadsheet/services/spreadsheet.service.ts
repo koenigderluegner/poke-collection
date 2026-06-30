@@ -215,7 +215,6 @@ export class SpreadsheetService {
 
   #getWorksheetConfig(cells: string[]): WorksheetConfig {
     const config: WorksheetConfig = {type: 'unknown', colIndex: {min: 0, max: 0}};
-    let configIndex = 0;
     let tempConfig: string[];
 
     for (const cell of cells) {
@@ -229,7 +228,6 @@ export class SpreadsheetService {
           }
         }
       }
-      configIndex++;
     }
     return config as WorksheetConfig;
   }

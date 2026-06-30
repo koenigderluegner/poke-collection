@@ -22,7 +22,7 @@
 
 <ng-template #menuTemplate>
   <!-- remove code duplication -->
-  <ul id="pop-up-main-menu" (click)="closeMenu()">
+  <ul id="pop-up-main-menu">
     <ng-container *ngTemplateOutlet="menuItems"/>
 
   </ul>
@@ -30,6 +30,10 @@
 
 
 <ng-template #menuItems>
+  <li>
+    <a class="p-2" routerLinkActive="selected" (click)="closeMenu()" routerLink="/"
+       [routerLinkActiveOptions]="{exact: true}">Living dexes</a>
+  </li>
   @if (valuablesLink()) {
     <li>
       <a class="p-2" routerLinkActive="selected" (click)="closeMenu()" [routerLink]="valuablesLink()">Valuables</a>

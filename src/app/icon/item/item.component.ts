@@ -23,7 +23,7 @@ export class ItemComponent {
     if (category) {
       categoryClass = category;
     } else if (slugClass) {
-      let searchedCategory = this.categories[slugClass];
+      const searchedCategory = this.categories[slugClass];
       if (!searchedCategory) {
         const suffixLess = slugClass.substring(0, slugClass.lastIndexOf('-'));
         categoryClass = this.categories[suffixLess];

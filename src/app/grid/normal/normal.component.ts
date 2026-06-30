@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { GridBaseAppearanceDirective } from '../components/grid-base-appearance.directive';
 import { PokemonComponent } from '../../icon/pokemon/pokemon.component';
 import { ItemComponent } from '../../icon/item/item.component';
@@ -16,7 +16,6 @@ import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
     MatIcon,
     SlugifyPipe
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     'class': 'grid-item',
   },

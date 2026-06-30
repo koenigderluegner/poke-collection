@@ -78,14 +78,11 @@
     flex-direction: column;
     width: 100%;
 
-    .mat-form-field, app-checkbox, input {
+    .mat-form-field, input {
       width: 100%;
       margin: 6px 0 12px 0;
     }
 
-    app-checkbox .inacitve-hider {
-      width: 100%;
-    }
   }
 
 }

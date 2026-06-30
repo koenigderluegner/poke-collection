@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, input, ViewEncapsulation } from '@angular/core';
+import { Component, inject, input, ViewEncapsulation } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SlugifyPipe } from '@shared/pipes/slugify.pipe';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -15,7 +15,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
   host: {
     'class': 'sub-navi-item',
   },
-  changeDetection: ChangeDetectionStrategy.Eager,
   hostDirectives: [
     {
       directive: RouterLink,
@@ -26,10 +25,9 @@ import { toSignal } from '@angular/core/rxjs-interop';
   ]
 })
 export class SubNaviItemComponent {
-  protected readonly routerLink: RouterLink = inject(RouterLink, {self: true});
-  protected readonly routerLinkActive = toSignal(inject(RouterLinkActive, {self: true}).isActiveChange);
-
   readonly text = input<string>();
   readonly meta = input<string>();
+  protected readonly routerLink: RouterLink = inject(RouterLink, {self: true});
+  protected readonly routerLinkActive = toSignal(inject(RouterLinkActive, {self: true}).isActiveChange);
 
 }

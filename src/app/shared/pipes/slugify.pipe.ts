@@ -33,7 +33,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SlugifyPipe implements PipeTransform {
 
-  charMap: { [key: string]: string; } = {
+  charMap: Record<string, string> = {
     ' ': ' ',
     '¡': '!',
     '¢': 'c',
