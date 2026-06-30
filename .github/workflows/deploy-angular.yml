@@ -43,7 +43,7 @@ jobs:
           regex: false
 
       - name: Build
-        run: pnpm run build -- --configuration production --base-href /poke-collection/
+        run: pnpm run build --configuration production --base-href /poke-collection/
 
       - name: Copy index.html to 404.html
         run: cp dist/poke-collection/browser/index.html dist/poke-collection/browser/404.html
